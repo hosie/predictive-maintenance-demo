@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <output path="/SapOrders05.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://www.ibm.com/iib/msl/json"/>
+        <namespace kind="supplement" prefix="out7" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp18001"/>
+        <namespace kind="supplement" prefix="out6" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edka3"/>
+        <namespace kind="supplement" prefix="out9" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk03"/>
+        <namespace kind="supplement" prefix="out8" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk02"/>
+        <namespace kind="supplement" prefix="out3" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2cublb000"/>
+        <namespace kind="supplement" prefix="out11" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edpa3"/>
+        <namespace kind="supplement" prefix="out48" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edpt1001"/>
+        <namespace kind="supplement" prefix="out49" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2curef"/>
+        <namespace kind="supplement" prefix="out2" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp20001"/>
+        <namespace kind="supplement" prefix="out12" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp19002"/>
+        <namespace kind="supplement" prefix="out5" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edpad001"/>
+        <namespace kind="supplement" prefix="out46" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05"/>
+        <namespace kind="supplement" prefix="out4" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp35000"/>
+        <namespace kind="supplement" prefix="out10" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp04001"/>
+        <namespace kind="supplement" prefix="out47" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edps5000"/>
+        <namespace kind="supplement" prefix="out41" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc19"/>
+        <namespace kind="supplement" prefix="out19" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edl37005"/>
+        <namespace kind="supplement" prefix="out40" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc18"/>
+        <namespace kind="supplement" prefix="out18" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc01"/>
+        <namespace kind="supplement" prefix="out17" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2cuval002"/>
+        <namespace kind="supplement" prefix="out16" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc04"/>
+        <namespace kind="supplement" prefix="out45" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk05001"/>
+        <namespace kind="supplement" prefix="out15" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc03"/>
+        <namespace kind="supplement" prefix="out44" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp01007"/>
+        <namespace kind="supplement" prefix="out14" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc05"/>
+        <namespace kind="supplement" prefix="out43" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edka1003"/>
+        <namespace kind="supplement" prefix="out13" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp02001"/>
+        <namespace kind="supplement" prefix="out42" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edpt2001"/>
+        <namespace kind="supplement" prefix="out57" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05idocbo"/>
+        <namespace kind="supplement" prefix="out58" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk18"/>
+        <namespace kind="supplement" prefix="out59" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk17"/>
+        <namespace kind="supplement" prefix="out50" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2txtp1"/>
+        <namespace kind="supplement" prefix="out52" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edca1"/>
+        <namespace kind="supplement" prefix="out51" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk04001"/>
+        <namespace kind="supplement" prefix="out54" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2eds01"/>
+        <namespace kind="supplement" prefix="out53" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edl39000"/>
+        <namespace kind="supplement" prefix="out56" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk14"/>
+        <namespace kind="supplement" prefix="out55" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2cucfg003"/>
+        <namespace kind="supplement" prefix="out28" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edkt1002"/>
+        <namespace kind="supplement" prefix="out29" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edl44004"/>
+        <namespace kind="supplement" prefix="out26" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edl38"/>
+        <namespace kind="supplement" prefix="out27" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05datarecord"/>
+        <namespace kind="supplement" prefix="out24" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2cuins002"/>
+        <namespace kind="supplement" prefix="out25" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc06000"/>
+        <namespace kind="supplement" prefix="out23" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp05002"/>
+        <namespace kind="supplement" prefix="out22" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edct2"/>
+        <namespace kind="supplement" prefix="out21" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edct1"/>
+        <namespace kind="supplement" prefix="out20" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc02"/>
+        <namespace kind="supplement" prefix="out60" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2txth1001"/>
+        <namespace kind="supplement" prefix="out61" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk01005"/>
+        <namespace kind="supplement" prefix="out39" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc07000"/>
+        <namespace kind="supplement" prefix="out35" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk36000"/>
+        <namespace kind="supplement" prefix="out36" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp03"/>
+        <namespace kind="supplement" prefix="out37" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/sapidoccontrolrecord"/>
+        <namespace kind="supplement" prefix="out38" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edc17"/>
+        <namespace kind="supplement" prefix="out32" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edpa1003"/>
+        <namespace kind="supplement" prefix="out31" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edp17001"/>
+        <namespace kind="supplement" prefix="out34" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edkt2001"/>
+        <namespace kind="supplement" prefix="out33" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2cuprt002"/>
+        <namespace kind="supplement" prefix="out30" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2addi1001"/>
+        <namespace kind="supplement" prefix="out" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05e2edk35000"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="OrderParts_Mapping">
+        <input namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,Properties)">
+            <cast castType="userDefined" path="JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var"/>
+        </input>
+        <output namespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05" path="mb:msg(SapOrders05,assembly,DataObject,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <assign value="A000000029">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/ReceiverPort"/>
+        </assign>
+        <assign value="LS">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/PartnerTypeOfSender"/>
+        </assign>
+        <assign value="ORDERS05">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/NameOfBasicType"/>
+        </assign>
+        <assign value="CLNT001">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/PartnerNumberOfSender"/>
+        </assign>
+        <assign value="ORDERS">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/LogicalMessageType"/>
+        </assign>
+        <assign value="JHDEST1">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/PartnerNumberOfRecipient"/>
+        </assign>
+        <assign value="700">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/SapReleaseForIdoc"/>
+        </assign>
+        <assign value="LS">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/PartnerTypeOfRecipient"/>
+        </assign>
+        <assign value="SAPMBT">
+            <output path="SapOrders05/SapOrders05IDocBO/SapIDocControlRecord/SenderPort"/>
+        </assign>
+        <assign value="foo">
+            <output path="SapOrders05/SapOrders05IDocBO/SapOrders05DataRecord/SapOrders05E2edk01005/Actioncodeforthewholeedimessage"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

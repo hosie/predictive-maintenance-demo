@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="PredictitiveMaintenanceDashboardApp">
+<head>
+<title>Dashboard</title>  
+  <link rel="stylesheet" href="prereqs/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="prereqs/bootstrap/dist/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <h1>Predictitive Maintenance Demo</h1>
+    <h2>Dashboard</h2>
+
+  </div>
+  <div class="row">
+    <div class="col-md-4">  
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div ng-controller="LondonBusController">
+            <h3>London Bus activity</h3>
+            Status = {{bus.status}}<br>
+          {{bus.milleage}}
+            {{bus.msgs[bus.msgs.length]}}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">  
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div ng-controller="IntegrationBusController">
+            <h3>Integration Bus activity</h3>
+Status = {{IIBListener.status}}<br> 
+MQTT messages received  <span class="badge">{{IIBListener.MQTT.MessagesReceived }}</span>
+            
+            
+          </div>  
+        </div>  
+      </div>  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div ng-controller="DepotController" class="panel-body">
+          <h3>Local Depot</h3>
+          Status={{status}}
+          <div ng-show="newServiceScheduled">
+            Sevice scheduled
+          </div>
+        </div>
+      </div>     
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>National Warehouse</h3>
+        </div>
+      </div>     
+    </div>
+  </div>
+  
+</div>
+  
+<script src="prereqs/angular/angular.min.js"></script>
+  <script src="prereqs/bower-mqttws/mqttws31.js"></script>
+  <script src="javascripts/LondonBusController.js"></script>
+  <script src="javascripts/IntegrationBusController.js"></script>
+  <script src="javascripts/DepotController.js"></script>
+
+  <script src="javascripts/main.js"></script>
+</body>
+
+</html>

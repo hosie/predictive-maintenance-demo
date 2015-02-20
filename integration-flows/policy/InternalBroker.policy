@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><policy type="MQTTPublish">    <policyProperties>        <description/>        <basic>         <hostName>localhost</hostName>            <port>11883</port>                    </basic>    </policyProperties></policy>
