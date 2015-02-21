@@ -1,0 +1,22 @@
+
+
+slc loopback:model
+Vehicle
+  Properties
+    VIN
+
+VehiclePart
+  Properties
+    DateFitted
+
+Part
+  Properties
+    SKU
+    StockLevel
+    ServiceLimit
+
+slc loopback:relation
+Vehicle has many parts through vehicleParts
+Part has many vehicles through viehcleParts
+
+

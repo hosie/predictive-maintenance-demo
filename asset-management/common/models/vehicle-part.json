@@ -1,0 +1,17 @@
+{
+  "name": "VehiclePart",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "DateFitted": {
+      "type": "date"
+    },
+    "MilleageFitted": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

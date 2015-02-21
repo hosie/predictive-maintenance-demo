@@ -1,0 +1,21 @@
+{
+  "name": "Vehicle",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "VIN": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "parts": {
+      "type": "hasMany",
+      "model": "Part",
+      "foreignKey": "",
+      "through": "VehiclePart"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

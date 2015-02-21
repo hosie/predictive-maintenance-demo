@@ -1,0 +1,26 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "Vehicle": 1,
+    "Part": 2,
+    "VehiclePart": 1
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "Vehicle": {},
+    "Part": {
+      "1": "{\"SKU\":\"abc001\",\"description\":\"Fan belt\",\"StockLevel\":0,\"ServiceLimit\":10000,\"id\":1}",
+      "2": "{\"SKU\":\"abc002\",\"description\":\"Spark plug\",\"StockLevel\":5,\"ServiceLimit\":20000,\"id\":2}",
+      "3": "{\"SKU\":\"abc003\",\"description\":\"Air filter\",\"StockLevel\":10,\"ServiceLimit\":20000,\"id\":3}"
+    },
+    "VehiclePart": {}
+  }
+}

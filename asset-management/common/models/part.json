@@ -1,0 +1,30 @@
+{
+  "name": "Part",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "SKU": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "StockLevel": {
+      "type": "number"
+    },
+    "ServiceLimit": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "vehicles": {
+      "type": "hasMany",
+      "model": "Vehicle",
+      "foreignKey": "",
+      "through": "VehiclePart"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
