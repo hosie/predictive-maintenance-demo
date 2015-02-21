@@ -1,0 +1,1 @@
+amqsput MAINTENANCE.SCHEDULE IB9QMGR < test001.in
