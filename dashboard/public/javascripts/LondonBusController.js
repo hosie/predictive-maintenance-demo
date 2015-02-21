@@ -64,7 +64,9 @@ function londonBusController($scope,$http){
     $scope.$apply(function(){
       bus.msgs.push(message.payloadString);
       var messageObj = JSON.parse(message.payloadString);
-      bus.milleage = messageObj.milleage;
+      console.log("parsedMessag:");
+      console.dir(messageObj);
+      bus.milleage = messageObj.d.mt;
     });
 
     //client.disconnect(); 
