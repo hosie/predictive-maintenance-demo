@@ -27,7 +27,7 @@
       <nodes xmi:type="ComIbmRoute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="357,183">
         <outTerminals terminalNodeID="Match" dynamic="true" label="Match"/>
         <translation xmi:type="utility:ConstantString" string="Route"/>
-        <filterTable filterPattern="($Root/JSON/Data/d/mt mod 100)=0" routingOutputTerminal="Match"/>
+        <filterTable filterPattern="($Root/JSON/Data/d/mt mod 10)=0" routingOutputTerminal="Match"/>
       </nodes>
       <nodes xmi:type="ComIbmPassthru.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="525,40">
         <translation xmi:type="utility:ConstantString" string="IgnoredEvents"/>
