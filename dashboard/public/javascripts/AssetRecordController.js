@@ -1,5 +1,4 @@
 
-
 /*
 Copyright 2015 IBM
 Author John Hosie 
@@ -17,13 +16,17 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function depotController($scope){
-  
-  var IIB = {
+function assetRecordController($scope,$http){
+  var assetManagement =  {
+    status:"disconnected",
+    lookups:0
+  };
+
+ var IIB = {
     host : "localhost",
     port : 4414,
-    clientId : "depot",    
-    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ScheduleMaintenance"            
+    clientId : "assetRecord",    
+    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ReadAssetRecord"            
   };
 
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
@@ -64,10 +67,10 @@ function depotController($scope){
   
   
       $scope.$apply(function(){
-        $scope.newServiceScheduled=true;
+        $scope.assetLookUps=true;
         setTimeout(function(){
           $scope.$apply(function(){
-            $scope.newServiceScheduled=false;
+            $scope.assetLookUps=false;
           });
         },3000);
         
@@ -80,5 +83,6 @@ function depotController($scope){
     }
   };	
   console.log("after connect");
+
     
 };

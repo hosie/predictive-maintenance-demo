@@ -17,13 +17,17 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function depotController($scope){
-  
-  var IIB = {
+function warehouseController($scope,$http){
+  var assetManagement =  {
+    status:"disconnected",
+    lookups:0
+  };
+
+ var IIB = {
     host : "localhost",
     port : 4414,
-    clientId : "depot",    
-    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ScheduleMaintenance"            
+    clientId : "warehouse",    
+    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/OrderParts"            
   };
 
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
@@ -64,10 +68,10 @@ function depotController($scope){
   
   
       $scope.$apply(function(){
-        $scope.newServiceScheduled=true;
+        $scope.warehouseOrder=true;
         setTimeout(function(){
           $scope.$apply(function(){
-            $scope.newServiceScheduled=false;
+            $scope.warehouseOrder=false;
           });
         },3000);
         
@@ -80,5 +84,6 @@ function depotController($scope){
     }
   };	
   console.log("after connect");
+
     
 };

@@ -22,7 +22,14 @@ function integrationBusController($scope,$http){
     msgs:[],
     MQTT:{
       MessagesReceived:0
+    },
+    File:{      
+      BytesWritten:0
+    },
+    HTTP:{
+      TotalMessages:0
     }
+
   };
 
   $scope.IIBListener=IIBListener;
@@ -81,6 +88,36 @@ function integrationBusController($scope,$http){
                 });
               }
             });
+        }else if(resourceType.name == "File")
+        {
+            
+            resourceType.resourceIdentifier.forEach(function(resourceInstance,i){
+              if(resourceInstance.name=="summary"){
+                $scope.$apply(function(){
+                  
+                  IIBListener.File.BytesWritten = resourceInstance.BytesWritten;
+                });
+              }
+              //console.log("file resource ");
+              //console.dir(resourceInstance);
+            });
+        }else if(resourceType.name == "Sockets")
+        {
+            
+            resourceType.resourceIdentifier.forEach(function(resourceInstance,i){
+              if(resourceInstance.name=="summary"){
+                $scope.$apply(function(){
+                  
+                  IIBListener.HTTP.TotalMessages = resourceInstance.TotalMessages;
+                });
+              }
+
+              
+              //console.log("socket resource ");
+              //console.dir(resourceInstance);
+            });
+        }else{
+          console.log("untracked resource manager " + resourceType.name);
         }
       });
   
