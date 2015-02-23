@@ -59,7 +59,7 @@ function depotController($scope){
   function onMessageArrived(message) {
     try
     {
-      console.log("onMessageArrived:");//+message.payloadString);
+      console.log("onMessageArrived flow stats:");//+message.payloadString);
       
   
   

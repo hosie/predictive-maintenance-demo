@@ -1,3 +1,9 @@
+
+.dashboard {
+  padding: 40px 15px;
+  text-align: center;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -11,3 +17,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.newsFlash{
+
+  font: 38px "Lucida Grande", Helvetica, Arial, sans-serif;
+          }
