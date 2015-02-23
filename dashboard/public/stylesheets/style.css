@@ -3,13 +3,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.milleage{
+
+  font: 38px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-@-webkit-keyframes fadeout {
-    0%   {background: red;}
-    25%  {background: yellow;}
-    50%  {background: blue;}
-    100% {background: green;}
+a {
+  color: #00B7FF;
 }

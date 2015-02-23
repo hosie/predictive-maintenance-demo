@@ -18,5 +18,6 @@ Part
 slc loopback:relation
 Vehicle has many parts through vehicleParts
 Part has many vehicles through viehcleParts
-
+VehiclePart belongs to Part
+VehiclePart belongs to Vehicle
 

@@ -5,9 +5,9 @@
     "ACL": 1,
     "RoleMapping": 1,
     "Role": 1,
-    "Vehicle": 1,
+    "Vehicle": 3,
     "Part": 2,
-    "VehiclePart": 1
+    "VehiclePart": 4
   },
   "models": {
     "User": {},
@@ -15,12 +15,19 @@
     "ACL": {},
     "RoleMapping": {},
     "Role": {},
-    "Vehicle": {},
+    "Vehicle": {
+      "1": "{\"VIN\":\"vin001\",\"id\":1}",
+      "2": "{\"VIN\":\"vin002\",\"id\":2}"
+    },
     "Part": {
       "1": "{\"SKU\":\"abc001\",\"description\":\"Fan belt\",\"StockLevel\":0,\"ServiceLimit\":10000,\"id\":1}",
       "2": "{\"SKU\":\"abc002\",\"description\":\"Spark plug\",\"StockLevel\":5,\"ServiceLimit\":20000,\"id\":2}",
       "3": "{\"SKU\":\"abc003\",\"description\":\"Air filter\",\"StockLevel\":10,\"ServiceLimit\":20000,\"id\":3}"
     },
-    "VehiclePart": {}
+    "VehiclePart": {
+      "1": "{\"DateFitted\":\"2014-11-18T00:00:00.000Z\",\"MilleageFitted\":20000,\"id\":1,\"vehicleId\":1,\"partId\":1}",
+      "2": "{\"DateFitted\":\"2013-10-09T23:00:00.000Z\",\"MilleageFitted\":10000,\"id\":2,\"vehicleId\":1,\"partId\":2}",
+      "3": "{\"id\":3}"
+    }
   }
 }

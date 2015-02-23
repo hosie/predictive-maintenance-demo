@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <MQInputMessage timestamp="1424552801485" nodeId="FCMComposite_1_1" name="test001" id="1424552801485-7">
+        <plainText>{&quot;d&quot;:{&quot;vin&quot;:&quot;abc123&quot;,&quot;mt&quot;:20000,&quot;parts&quot;:[&quot;part001&quot;,&quot;part002&quot;,&quot;part003&quot;]}}</plainText>
+        <MessageHeader backoutCount="0" characterSet="0" encoding="0" expiry="-1" feedback="0" messageFlags="0" messageType="8" messageSequenceNumber="1" offset="0" originalLength="-1" persistence="2" priority="-1" putApplicationType="0" report="0"/>
+    </MQInputMessage>
+</MessagePool>

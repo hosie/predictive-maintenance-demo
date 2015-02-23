@@ -18,7 +18,7 @@ setInterval(function(){
   milleage=milleage+50;
   console.log("publishing");
 
-  var message = '{"d":{"name":"Spark Core","v":"0.3","rssi":-68,"mf":76,"mb":73,"mt":' + milleage + ',"t":"-","tilt":"N"}}';
+  var message = '{"d":{"name":"Spark Core","v":"0.3","vin":"1","rssi":-68,"mf":76,"mb":73,"mt":' + milleage + ',"t":"-","tilt":"N"}}';
   client.publish('iot-2/evt/status/fmt/json', message);
   console.log("published");
 },5000);

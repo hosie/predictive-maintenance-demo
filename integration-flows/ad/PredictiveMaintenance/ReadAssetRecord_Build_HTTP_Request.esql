@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE ReadAssetRecord_Build_HTTP_Request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.fitler='{"include":["part"],"where":{"vehicleId":'  || '1' || '}}';
+		RETURN TRUE;
+	END;
+
+	
+END MODULE;

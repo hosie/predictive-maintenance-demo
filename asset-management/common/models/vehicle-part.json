@@ -11,7 +11,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "vehicle": {
+      "type": "belongsTo",
+      "model": "Vehicle",
+      "foreignKey": ""
+    },
+    "part": {
+      "type": "belongsTo",
+      "model": "Part",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": []
 }

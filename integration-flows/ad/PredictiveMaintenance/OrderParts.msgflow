@@ -10,7 +10,7 @@
       <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="146,204" queueName="PARTS.ORDER.REQUEST" connection="SERVER" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="661,191" queueName="PARTS.ORDER.RESPONSE" connection="SERVER" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="658,208" queueName="PARTS.ORDER.RESPONSE" connection="SERVER" destinationQueueManagerName="IB9QMGR">
         <translation xmi:type="utility:ConstantString" string="Response"/>
         <monitorEvents eventSourceDescription="In terminal" eventSourceName="Response.terminal.in" eventIdentity="Response.InTerminal">
           <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
@@ -23,10 +23,10 @@
           </eventXMLDoc>
         </monitorEvents>
       </nodes>
-      <nodes xmi:type="ComIbmSAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="404,130" adapterComponent="Adapters/SAP/OrdersIDOC.outadapter" defaultMethod="executeSapOrders05">
+      <nodes xmi:type="ComIbmSAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="452,134" adapterComponent="Adapters/SAP/OrdersIDOC.outadapter" defaultMethod="executeSapOrders05">
         <translation xmi:type="utility:ConstantString" string="SAP Request"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="298,190" mappingExpression="msl://{default}#OrderParts_Mapping">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="308,204" mappingExpression="msl://{default}#OrderParts_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
       <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="415,50" queueName="PARTS.ORDER.FAULT" connection="SERVER" destinationQueueManagerName="IB9QMGR">

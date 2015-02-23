@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema targetNamespace="http://www.ibm.com/iib/msl/json"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/iib/msl/json"> 
+    <xsd:complexType block="#all" name="JSONArray_1"> 
+    <xsd:sequence> 
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Item" nillable="true"> 
+        <xsd:complexType> 
+          <xsd:sequence> 
+            <xsd:element name="SKU" nillable="true" type="xsd:string"/> 
+          </xsd:sequence> 
+        </xsd:complexType> 
+      </xsd:element> 
+    </xsd:sequence> 
+  </xsd:complexType> 
+</xsd:schema>]]></inlinedXMLSchema>
     <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" targetNamespace="http://www.ibm.com/iib/msl/json" var="var1"/>
     <output path="/SapOrders05.xsd"/>
     <namespaces>
         <namespace kind="supplement" prefix="in" uri="http://www.ibm.com/iib/msl/json"/>
@@ -68,7 +82,7 @@
     <generation engine="xquery"/>
     <mappingDeclaration name="OrderParts_Mapping">
         <input namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,Properties)">
-            <cast castType="userDefined" path="JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var"/>
+            <cast castType="userDefined" path="JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONArray_1" ref="var1"/>
         </input>
         <output namespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/saporders05" path="mb:msg(SapOrders05,assembly,DataObject,Properties)"/>
         <move>
@@ -105,5 +119,14 @@
         <assign value="foo">
             <output path="SapOrders05/SapOrders05IDocBO/SapOrders05DataRecord/SapOrders05E2edk01005/Actioncodeforthewholeedimessage"/>
         </assign>
+        <foreach>
+            <input path="JSON/spath('Data',2)/Item" var="Item"/>
+            <input auxiliary="true" path="JSON/spath('Data',2)/Item/SKU" var="SKU"/>
+            <output path="SapOrders05/SapOrders05IDocBO/SapOrders05DataRecord/SapOrders05E2edp01007"/>
+            <move>
+                <input path="$SKU/."/>
+                <output path="Itemnumber"/>
+            </move>
+        </foreach>
     </mappingDeclaration>
 </mappingRoot>
