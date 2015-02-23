@@ -341,7 +341,7 @@
           <div ng-controller="DepotController" class="panel-body">
             <h2>Local Depot</h2>
             <!-- Status={{status}}-->
-            <div class="newsFlash"> <!-- ng-show="newServiceScheduled"> -->
+            <div class="newsFlash" ng-show="newServiceScheduled">
               Sevice scheduled
             </div>
           </div>
@@ -350,7 +350,7 @@
       <div class="col-md-3">
        
         <div class="panel panel-default">
-          <div ng-controller="AssetRecordController" class="panel-body">
+          <div <!--ng-controller="AssetRecordController"--> class="panel-body">
             <h2>Asset Records</h2>
 <!-- Status = {{IIBListener.status}} -->
 Record lookups  <span class="badge">0</span>

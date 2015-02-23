@@ -16,9 +16,11 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="value1" name="VIN" type="xsd:string"/>
-							<xsd:element ibmDfdlExtn:sampleValue="value2" name="partSKU" type="xsd:string"/>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="currentMiles" type="xsd:string"/>
-						</xsd:sequence>
+                            							<xsd:element name="License" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value3" name="currentMiles" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value2" name="partSKU" type="xsd:string"/>
+                            <xsd:element name="partDescription" type="xsd:string"/>
+													</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>				
 			</xsd:sequence>

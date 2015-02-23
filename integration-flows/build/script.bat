@@ -1,6 +1,8 @@
+call mqsistop TESTNODE_John
+call mqsideletebroker TESTNODE_John
 @rem start queue manager
 set PATH=%PATH%;"C:\Program Files (x86)\IBM\WebSphere MQ\bin"
-@rem strmqm IB9QMGR
+strmqm IB9QMGR
 
  call mqsicreatebroker TESTNODE_John
  call mqsistart TESTNODE_John
@@ -14,6 +16,7 @@ mkdir C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTPublish
 cp ..\policy\InternalBroker.policy C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTPublish\InternalBroker
 cp ..\policy\BusEvents.policy C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTSubscribe\BusEvents
 mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n policyUrl -v /MQTTPublish/InternalBroker.policy
+mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n enabled -v true
 call mqsistop TESTNODE_John
 call mqsistart TESTNODE_John
 call mqsichangeresourcestats TESTNODE_John -e default -c active
@@ -23,7 +26,7 @@ call mqsipackagebar -a output\demo.bar -w ..\ad -y VehicleMaintenance -k Predict
 call mqsideploy -a output\demo.bar TESTNODE_John -e default
 @rem activate flow monitoring
 call mqsichangeflowmonitoring TESTNODE_John -e default -c active -j -k PredictiveMaintenance
-
+call mqsichangeflowstats TESTNODE_John -e default -c active -j -k PredictiveMaintenance -a
 
 @rem deploy policy
 @rem mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents

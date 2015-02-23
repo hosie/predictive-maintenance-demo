@@ -10,7 +10,7 @@
       <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="111,164" queueName="MAINTENANCE.SCHEDULE" connection="SERVER" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="474,172" outputDirectory="C:\temp\tmp1502\fileout" outputFilename="out.txt" writeMode="writeInPlace">
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="474,172" outputDirectory="C:\Users\IBM_ADMIN\Desktop\VehiclePartReplacements" outputFilename="Today.csv" writeMode="writeInPlace">
         <translation xmi:type="utility:ConstantString" string="File Output"/>
         <monitorEvents eventSourceDescription="In terminal" eventSourceName="File Output.terminal.in" eventIdentity="File Output.InTerminal">
           <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
