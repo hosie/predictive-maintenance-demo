@@ -1,6 +1,8 @@
 To demonstrate this scenario
+
     1) Configure the IoT foundation. TODO - add instructions for this.  For now, the demo is hard coded to use the organisation owned by Peter Crocker
                                      At the very least, we should describe how to use a local MQ Queue manager as the MQTT broker.
+
     2) Build and deploy the integrations.
             Run the batch script .\integration-flows\build\script.bat 
             You may need to edit it to suit your local environment
