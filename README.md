@@ -1,4 +1,5 @@
 To demonstrate this scenario
+    0) Present the background and scenario from '6462A Integrating the Internet of Things with IBM Integration Bus 2015-02-22.pptx'
     1) Configure the IoT foundation. TODO - add instructions for this.  For now, the demo is hard coded to use the organisation owned by Peter Crocker
                                      At the very least, we should describe how to use a local MQ Queue manager as the MQTT broker.
     2) Build and deploy the integrations.
