@@ -1,3 +1,9 @@
+Prereqs
+    node.js and npm
+    IIB V10
+    IoT foundation
+    bower ( installed globally on node.js ... npm install -g bower)
+
 To demonstrate this scenario
 
     1) Configure the IoT foundation. TODO - add instructions for this.  For now, the demo is hard coded to use the organisation owned by Peter Crocker
