@@ -19,14 +19,15 @@ mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n policyUrl
 mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n enabled -v true
 call mqsistop TESTNODE_John
 call mqsistart TESTNODE_John
-call mqsichangeresourcestats TESTNODE_John -e default -c active
 @rem build bar file
 mkdir output
 call mqsipackagebar -a output\demo.bar -w ..\ad -y VehicleMaintenance -k PredictiveMaintenance
 call mqsideploy -a output\demo.bar TESTNODE_John -e default
 @rem activate flow monitoring
+call mqsichangeresourcestats TESTNODE_John -e default -c active
 call mqsichangeflowmonitoring TESTNODE_John -e default -c active -j -k PredictiveMaintenance
-call mqsichangeflowstats TESTNODE_John -e default -c active -j -k PredictiveMaintenance -a
+call mqsichangeflowstats TESTNODE_John -g -c active -j -k PredictiveMaintenance -s -o json -n advanced
+@rem call mqsichangeflowstats TESTNODE_John -g -c active -j -k PredictiveMaintenance -a -o json -n advanced
 
 @rem deploy policy
 @rem mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents
