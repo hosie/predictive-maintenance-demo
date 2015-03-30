@@ -1,3 +1,9 @@
+Prereqs
+    node.js and npm
+    IIB V10
+    IoT foundation
+    bower ( installed globally on node.js ... npm install -g bower)
+
 To demonstrate this scenario
 
     0) Present the background and scenario from 'Background.pptx'
