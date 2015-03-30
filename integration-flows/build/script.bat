@@ -13,10 +13,10 @@ call mqsichangeproperties TESTNODE_John -c EISProviders -o SAP -n nativeLibs,jar
 call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-3siysh-fiux9wzyex" -p "bftwcV9@*TZy(iwF)1"
 mkdir C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTSubscribe
 mkdir C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTPublish
-cp ..\policy\InternalBroker.policy C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTPublish\InternalBroker
-cp ..\policy\BusEvents.policy C:\ProgramData\IBM\MQSI\components\TESTNODE_John\policies\docs\MQTTSubscribe\BusEvents
-mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n policyUrl -v /MQTTPublish/InternalBroker.policy
-mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n enabled -v true
+call mqsicreatepolicy TESTNODE_John -t MQTTPublish -f ..\policy\InternalBroker.policy -l InternalBroker
+call mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents
+call mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n policyUrl -v /MQTTPublish/InternalBroker.policy
+call mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n enabled -v true
 call mqsistop TESTNODE_John
 call mqsistart TESTNODE_John
 @rem build bar file
