@@ -7,16 +7,16 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj16/DecideAction.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj30/DecideAction.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="92,262" queueName="ASSET.RECORD" connection="SERVER" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="92,262" queueName="ASSET.RECORD" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
       <nodes xmi:type="ComIbmFlowOrder.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="621,265">
         <translation xmi:type="utility:ConstantString" string="Flow Order"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="794,222" queueName="PARTS.ORDER.REQUEST" connection="SERVER" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="794,222" queueName="PARTS.ORDER.REQUEST" destinationQueueManagerName="IB9QMGR">
         <translation xmi:type="utility:ConstantString" string="Order Parts"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="743,320" queueName="MAINTENANCE.SCHEDULE" connection="SERVER" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="743,320" queueName="MAINTENANCE.SCHEDULE" destinationQueueManagerName="IB9QMGR">
         <translation xmi:type="utility:ConstantString" string="Schedule Maintenance"/>
       </nodes>
       <nodes xmi:type="ComIbmPassthru.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="289,52">
@@ -46,10 +46,10 @@
     </composition>
     <propertyOrganizer/>
     <stickyBoard>
-      <stickyNote location="15,43">
+      <stickyNote location="15,43" association="FCMComposite_1_6">
         <body xmi:type="utility:ConstantString" string="Filter the list of parts to only those that over the service limit and need replacement"/>
       </stickyNote>
-      <stickyNote location="166,114">
+      <stickyNote location="531,115" association="FCMComposite_1_9">
         <body xmi:type="utility:ConstantString" string="If there are no parts that require replacement, take no action"/>
       </stickyNote>
     </stickyBoard>

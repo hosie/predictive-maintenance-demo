@@ -8,7 +8,7 @@
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj30/FilterEvents.gif"/>
     <composition>
       <nodes xmi:type="com_ibm_connector_mqtt_ComIbmEventInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="76,183" clientId="a:3siysh:hosie" topicName="iot-2/type/+/id/+/evt/+/fmt/+" hostName="3siysh.messaging.internetofthings.ibmcloud.com" port="1883" qos="0" connectorName="MQTT" securityIdentity="iotFoundation" messageDomainProperty="JSON" validateTiming="deferred" parserXmlnscBuildTreeUsingXMLSchema="no" parserXmlnscUseForXmlnsDomain="no" parserXmlnscMixedContentRetainMode="none"
-          parserXmlnscCommentsRetainMode="none" parserXmlnscProcessingInstructionsRetainMode="none" validateMaster="none" validateFailureAction="exception" validateAllValueConstraints="true" validateFixup="none">
+          parserXmlnscCommentsRetainMode="none" parserXmlnscProcessingInstructionsRetainMode="none" validateMaster="none" validateFailureAction="exception" validateAllValueConstraints="true" validateFixup="none" policyUrl="/apiv1/policy/MQTTSubscribe/BusEvents">
         <translation xmi:type="utility:ConstantString" string="MQTTSubscribe"/>
         <monitorEvents eventSourceDescription="Out terminal" eventSourceName="MQTTSubscribe.terminal.out" eventIdentity="MQTTSubscribe.OutTerminal">
           <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
@@ -21,7 +21,7 @@
           </eventXMLDoc>
         </monitorEvents>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="544,260" queueName="FILTERED.EVENTS" connection="SERVER" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="607,267" queueName="FILTERED.EVENTS" destinationQueueManagerName="IB9QMGR">
         <translation xmi:type="utility:ConstantString" string="MQ Output"/>
       </nodes>
       <nodes xmi:type="ComIbmRoute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="357,183">
