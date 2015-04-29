@@ -1,8 +1,26 @@
+var localmode=false;
+if(process.argv[2]=="--localMode")
+{
+  localmode=true;
+}
+
+
 
 var hostname = '3siysh.messaging.internetofthings.ibmcloud.com';
 var clientId = 'd:3siysh:sparkcore:112233445566';
 var password = 'efD9gyS3SSX)ogFtsi';
 var userName = 'use-token-auth';
+var port     = 1883;
+
+if(localmode)
+{
+  console.log("Running with local MQTT broker");
+  hostname = 'localhost';
+  clientId = 'device';
+  port = 11883;
+  password = '';
+  userName = '';
+}
 /*
 var hostname = 'localhost';
 var clientId = 'd:3siysh:sparkcore:112233445566';
@@ -16,7 +34,7 @@ var userName = 'use-token-auth';
 function run(){
 
   var mqtt    = require('mqtt');
-  client  = mqtt.connect('mqtt://' + userName +':'+ password + '@' + hostname + '?clientId=' + clientId );
+  client  = mqtt.connect('mqtt://' + userName +':'+ password + '@' + hostname + ':' + port + '?clientId=' + clientId );
 
     setInterval(function(){
       if(milleage<49000)
