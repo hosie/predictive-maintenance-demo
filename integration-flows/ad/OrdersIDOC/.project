@@ -17,7 +17,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<name>com.ibm.etools.mft.uri.sharedlibbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -32,7 +32,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.ibm.etools.mft.uri.sharedlibbuilder</name>
+			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

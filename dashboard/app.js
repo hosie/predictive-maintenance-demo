@@ -20,6 +20,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/directives',express.static('C:\\John\\git\\integration-dashboard\\src\\public\\directives'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

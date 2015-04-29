@@ -6,6 +6,11 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>com.ibm.dfdl.validation.dfdlBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>com.ibm.etools.mft.applib.applibbuilder</name>
 			<arguments>
 			</arguments>
@@ -16,7 +21,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<name>com.ibm.etools.mft.uri.sharedlibbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -31,7 +36,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.ibm.etools.mft.uri.sharedlibbuilder</name>
+			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -102,11 +107,6 @@
 		</buildCommand>
 		<buildCommand>
 			<name>com.ibm.etools.mft.unittest.ui.TestCaseBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>com.ibm.dfdl.validation.dfdlBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

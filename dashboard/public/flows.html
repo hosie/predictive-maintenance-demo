@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/prereqs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/prereqs/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="/prereqs/angular/angular.js"></script>    
+    <script src="/directives/iib-widgets.js"></script>
+    <script src="/prereqs/angular-bootstrap/ui-bootstrap-tpls.js"></script>    
+  </head>
+  <body ng-app="IotFlows" ng-controller="MainController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">          
+          <a class="navbar-brand" href="#">Predictitive Maintenance flows</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">        
+        <div class="col-md-3 widget-wrapper">         
+          <h3>FilterEvents</h3>          
+          <div iib-flow-stats iib-flow-name="FilterEvents" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
+        </div>
+        <div class="col-md-3 widget-wrapper">         
+          <h3>ReadAssetRecord</h3>          
+          <div iib-flow-stats iib-flow-name="ReadAssetRecord" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
+        </div>
+        <div class="col-md-3 widget-wrapper">         
+          <h3>DecideAction</h3>          
+          <div iib-flow-stats iib-flow-name="DecideAction" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
+        </div>
+        <div class="col-md-3 widget-wrapper">         
+          <h3>ScheduleMaintenance</h3>          
+          <div iib-flow-stats iib-flow-name="ScheduleMaintenance" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
+        </div>
+        <div class="col-md-3 widget-wrapper">         
+          <h3>OrderParts</h3>          
+          <div iib-flow-stats iib-flow-name="OrderParts" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
+        </div>
+      </div>
+    </div>  
+  </body>
+  <script>
+  var app = angular.module("IotFlows",['iibWidgets','ui.bootstrap'])//create an application with a dependancy on ngIib 
+            .controller("MainController",function($scope,$modal,$http){
+              console.log("Using flow tester");
+
+              $scope.attributesForGeneric={
+                iibFlowName : "genericFlowName",
+                iibSimulation: "true"
+              };
+
+              $scope.editMode=false;
+
+              $scope.editWidget=function(currentWidget){
+                console.log("edit widget");
+                console.dir(currentWidget);
+                var modalInstance = $modal.open({
+                  templateUrl: 'partials/editWidgetDialog.html',
+                  controller: 'EditWidgetController',
+                  resolve: {
+                    widget: function () {
+                      return currentWidget;
+                    }
+                  }
+                });
+
+              };
+
+              $scope.addWidget=function(){
+
+                var modalInstance = $modal.open({
+                  
+                  templateUrl: 'partials/addWidgetDialog.html',
+                  controller: 'AddWidgetController',
+                  resolve: {
+                    widgets: function () {
+                      return $scope.widgets;
+                    }
+                  }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                  $scope.selected = selectedItem;
+                }, function () {
+                  console.log('Modal dismissed at: ' + new Date());
+                });
+              };
+
+              
+              $scope.widgets=[
+              {
+                specId:"iib-flow-stats",
+                attributes:{
+                  flowName:"MQTTSubscribe",
+                  host:"localhost",
+                  port:4414
+                }
+              }
+
+              ];
+
+              $scope.widgets.add = function(specId){
+                
+              
+                this.push({
+                  specId:specId,
+                  flowName:"MQTTSubscribe",
+                  attributes:{
+                      host:"localhost",
+                      port:4414
+                  }
+                });
+                
+              };
+              
+
+              $scope.toggleEdit=function(){
+                console.log("changing edit mode");
+                $scope.editMode=!$scope.editMode;
+              }
+              $scope.testFlow= function(flowUrl){
+                console.log("testing flow");
+                $http.post("http://localhost:7800/"+flowUrl)
+                  .success(function(data,status,headers,config){
+                     console.log("Success");
+                  })
+                  .error(function(data,status,headers,config){
+                     console.log("Error");
+                  });
+                $http.post("http://localhost:7801/"+flowUrl);
+              }
+            });
+
+  
+  
+
+  
+  </script>
+</html>
+

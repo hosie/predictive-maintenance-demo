@@ -1,4 +1,4 @@
-var app = angular.module('PredictitiveMaintenanceDashboardApp',[]);
+var app = angular.module('PredictitiveMaintenanceDashboardApp',['iibWidgets']);
 
 app.controller('LondonBusController',londonBusController);
 app.controller('IntegrationBusController',integrationBusController);
