@@ -10,10 +10,12 @@ call mqsicreateexecutiongroup TESTNODE_John -e default
 
 @rem set up environment for SAP nodes
 call mqsichangeproperties TESTNODE_John -c EISProviders -o SAP -n nativeLibs,jarsURL -v "C:\John\sapjco3\308\64","C:\John\sapjco3\308\64"
-call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-3siysh-fiux9wzyex" -p "bftwcV9@*TZy(iwF)1"
+@rem pcrockers org call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-3siysh-fiux9wzyex" -p "bftwcV9@*TZy(iwF)1"
+call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-jk6y1t-jteajwlvon" -p "5t?brtl8d+WCUr+VGC"
 call mqsicreatepolicy TESTNODE_John -t MQTTPublish -f ..\policy\InternalBroker.policy -l InternalBroker
 @rem use IoT cloud 
 call mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents
+call mqsicreatepolicy TESTNODE_John -t WorkloadManagement -l smoothing -f ..\policy\smoothing.policy
 @rem local test mode call mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.local.policy -l BusEvents
 call mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n policyUrl -v /MQTTPublish/InternalBroker.policy
 call mqsichangeproperties TESTNODE_John -b pubsub -o BusinessEvents/MQTT -n enabled -v true

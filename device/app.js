@@ -1,3 +1,19 @@
+/*
+To connect to service in jhosie org 
+org=jk6y1t
+type=busSimulator
+id=fakeBus01
+auth-method=token
+auth-token=6a4njnp3+gk2x0R8BH
+				 
+*/
+
+var hostname = 'jk6y1t.messaging.internetofthings.ibmcloud.com';
+var clientId = 'd:jk6y1t:busSimulator:fakeBus01';
+var password = '6a4njnp3+gk2x0R8BH';
+var userName = 'use-token-auth';
+var port     = 1883;
+
 var localmode=false;
 if(process.argv[2]=="--localMode")
 {
@@ -5,13 +21,13 @@ if(process.argv[2]=="--localMode")
 }
 
 
-
+/*
 var hostname = '3siysh.messaging.internetofthings.ibmcloud.com';
 var clientId = 'd:3siysh:sparkcore:112233445566';
 var password = 'efD9gyS3SSX)ogFtsi';
 var userName = 'use-token-auth';
 var port     = 1883;
-
+*/
 if(localmode)
 {
   console.log("Running with local MQTT broker");
