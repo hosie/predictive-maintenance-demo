@@ -15,15 +15,17 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function londonBusController($scope,$http){
+function londonBusController($rootScope,$scope,$http){
   var bus =  {
     status:"disconnected",
     milleage:0,
     msgs:[]
   };
+  $rootScope.bleeps={};
+  $scope.bleeps=$rootScope.bleeps;
 
   $scope.bus=bus;
-
+/*Pcrockers org
     var IoT = {
     host : "3siysh.messaging.internetofthings.ibmcloud.com",
     port : 1883,
@@ -32,7 +34,16 @@ function londonBusController($scope,$http){
     password : "bftwcV9@*TZy(iwF)1",
     topic : "iot-2/type/+/id/+/evt/+/fmt/+"
   };
-  
+  */
+/*jhosies org*/
+  var IoT = {
+    host : "jk6y1t.messaging.internetofthings.ibmcloud.com",
+    port : 1883,
+    clientId : "a:jk6y1t:dash",
+    userName : "a-jk6y1t-jteajwlvon",
+    password : "5t?brtl8d+WCUr+VGC",
+    topic : "iot-2/type/+/id/+/evt/+/fmt/+"
+  };
 
   var client = new Paho.MQTT.Client(IoT.host, IoT.port, IoT.clientId);
   client.onConnectionLost = onConnectionLost;
@@ -60,12 +71,49 @@ function londonBusController($scope,$http){
   	console.log("onConnectionLost:"+responseObject.errorMessage);
   };
   function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
+    //console.log("onMessageArrived:"+message.payloadString);
     $scope.$apply(function(){
+      //console.log("bleep1");
+      $scope.bleeps.bleep1=true;
+      setTimeout(function(){
+
+        $scope.$apply(function(){
+          //console.log("bleep2");
+          //$scope.bleeps.bleep1=false;
+          $scope.bleeps.bleep2=true;
+        });
+        setTimeout(function(){
+
+
+            $scope.$apply(function(){
+              //console.log("bleep3");
+              $scope.bleeps.bleep1=false;
+              $scope.bleeps.bleep3=true;
+            });
+            setTimeout(function(){
+
+              $scope.$apply(function(){
+                $scope.bleeps.bleep2=false;
+
+                //console.log("bleep off");
+              });
+            },50);
+            setTimeout(function(){
+
+              $scope.$apply(function(){
+                $scope.bleeps.bleep3=false;
+
+                //console.log("bleep off");
+              });
+            },50);
+        },50);
+
+
+      },50);
       bus.msgs.push(message.payloadString);
       var messageObj = JSON.parse(message.payloadString);
-      console.log("parsedMessag:");
-      console.dir(messageObj);
+      //console.log("parsedMessag:");
+      //console.dir(messageObj);
       bus.milleage = messageObj.d.mt;
     });
 

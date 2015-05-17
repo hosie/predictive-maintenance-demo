@@ -29,6 +29,7 @@ function warehouseController($scope,$http){
     clientId : "warehouse",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/OrderParts"            
   };
+  $scope.numberOfOrders=0;
 
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
   client.onConnectionLost = onConnectionLost;
@@ -64,10 +65,9 @@ function warehouseController($scope,$http){
     try
     {
       console.log("onMessageArrived flow stats:");//+message.payloadString);
-      
-  
   
       $scope.$apply(function(){
+        $scope.numberOfOrders++;
         $scope.warehouseOrder=true;
         setTimeout(function(){
           $scope.$apply(function(){

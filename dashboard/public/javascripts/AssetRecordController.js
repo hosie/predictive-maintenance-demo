@@ -29,6 +29,7 @@ function assetRecordController($scope,$http){
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ReadAssetRecord"            
   };
 
+  $scope.numberOfRecordReads=0;
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
@@ -62,11 +63,14 @@ function assetRecordController($scope,$http){
   function onMessageArrived(message) {
     try
     {
-      console.log("onMessageArrived flow stats:");//+message.payloadString);
+      //console.log("onMessageArrived flow stats:");//+message.payloadString);
+      
       
   
   
       $scope.$apply(function(){
+        $scope.numberOfRecordReads = $scope.numberOfRecordReads + 0.5;
+        
         $scope.assetLookUps=true;
         setTimeout(function(){
           $scope.$apply(function(){

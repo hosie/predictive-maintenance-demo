@@ -32,6 +32,7 @@ function depotController($scope){
   client.connect({
     onSuccess:onConnect
   });  
+  $scope.numberOfServicesScheduled=0;
 
   function onConnect() {
     $scope.$apply(function(){
@@ -64,6 +65,7 @@ function depotController($scope){
   
   
       $scope.$apply(function(){
+        $scope.numberOfServicesScheduled++;
         $scope.newServiceScheduled=true;
         setTimeout(function(){
           $scope.$apply(function(){
