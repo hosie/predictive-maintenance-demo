@@ -1,0 +1,1 @@
+amqsput PARTS.ORDER.REQUEST IB9QMGR < test001.in
