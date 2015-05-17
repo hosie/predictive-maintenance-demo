@@ -1,4 +1,7 @@
 
+/*required for angular bootstrap*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 .dashboard {
   padding: 40px 15px;
   text-align: center;
@@ -16,6 +19,25 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+
+.iib-chart path.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.iib-chart .y.axis .tick line{/*,text{*/
+  stroke:#fff;
+  stroke-width: 1px;
+
+  font: 10px arial;
+}
+
+.iib-chart .dataLine{
+
+  stroke: #770;
 }
 
 .newsFlash{
