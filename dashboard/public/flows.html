@@ -7,6 +7,7 @@
     <script src="/prereqs/angular/angular.js"></script>    
     <script src="/directives/iib-widgets.js"></script>
     <script src="/prereqs/angular-bootstrap/ui-bootstrap-tpls.js"></script>    
+    <script src="/prereqs/d3/d3.min.js"></script>
   </head>
   <body ng-app="IotFlows" ng-controller="MainController">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -18,23 +19,23 @@
     </nav>
     <div class="container-fluid">
       <div class="row">        
-        <div class="col-md-3 widget-wrapper">         
+        <div class="col-md-6 widget-wrapper">         
           <h3>FilterEvents</h3>          
           <div iib-flow-stats iib-flow-name="FilterEvents" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
-        </div>
-        <div class="col-md-3 widget-wrapper">         
+        </div>        
+        <div class="col-md-6 widget-wrapper">         
           <h3>ReadAssetRecord</h3>          
           <div iib-flow-stats iib-flow-name="ReadAssetRecord" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
         </div>
-        <div class="col-md-3 widget-wrapper">         
+        <div class="col-md-6 widget-wrapper">         
           <h3>DecideAction</h3>          
           <div iib-flow-stats iib-flow-name="DecideAction" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
         </div>
-        <div class="col-md-3 widget-wrapper">         
+        <div class="col-md-6 widget-wrapper">         
           <h3>ScheduleMaintenance</h3>          
           <div iib-flow-stats iib-flow-name="ScheduleMaintenance" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
         </div>
-        <div class="col-md-3 widget-wrapper">         
+        <div class="col-md-6 widget-wrapper">         
           <h3>OrderParts</h3>          
           <div iib-flow-stats iib-flow-name="OrderParts" iib-mqtt-host="localhost" iib-mqtt-port="4414"></div>                    
         </div>
