@@ -16,21 +16,30 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function assetRecordController($scope,$http){
+function assetRecordFactory(){
+
+  var factory = {
+    callbacks:[],
+    on:function(callback){
+      this.callbacks.push(callback);
+      console.log("on called");
+    }
+  };
+
   var assetManagement =  {
     status:"disconnected",
     lookups:0
   };
 
- var IIB = {
+  var IIB = {
     host : "localhost",
     port : 4414,
     clientId : "assetRecord",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ReadAssetRecord"            
   };
 
-  $scope.numberOfRecordReads=0;
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
+  
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
   client.connect({
@@ -38,9 +47,9 @@ function assetRecordController($scope,$http){
   });  
 
   function onConnect() {
-    $scope.$apply(function(){
+    /*$scope.$apply(function(){
       $scope.status = "connected";
-    });
+    });*/
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
     
@@ -56,19 +65,36 @@ function assetRecordController($scope,$http){
   };
   function onConnectionLost(responseObject) {
 
-    $scope.status="connection lost";
+    //$scope.status="connection lost";
     if (responseObject.errorCode !== 0)
   	console.log("onConnectionLost:"+responseObject.errorMessage);
   };
   function onMessageArrived(message) {
     try
     {
-      //console.log("onMessageArrived flow stats:");//+message.payloadString);
-      
-      
+      console.log("onMessageArrived flow stats:");//+message.payloadString);
   
-  
-      $scope.$apply(function(){
+      factory.callbacks.forEach(function(callback){
+        callback();
+      });
+      
+    } catch (err)
+    {
+
+      console.log("error in onMessageArrived");
+      console.dir(err);
+    }
+  };	
+  console.log("after connect");
+  return factory;
+
+}
+
+function assetRecordController($scope,AssetRecordFactory){
+
+  $scope.numberOfRecordReads=0;
+  AssetRecordFactory.on(function(){
+    $scope.$apply(function(){
         $scope.numberOfRecordReads = $scope.numberOfRecordReads + 0.5;
         
         $scope.assetLookUps=true;
@@ -78,15 +104,7 @@ function assetRecordController($scope,$http){
           });
         },3000);
         
-      });
-    } catch (err)
-    {
-
-      console.log("error in onMessageArrived");
-      console.dir(err);
-    }
-  };	
-  console.log("after connect");
-
+    });
+  });
     
 };

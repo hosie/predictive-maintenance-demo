@@ -24,6 +24,7 @@ var port     = 1883;
 
 
 var localmode=false;
+var burstMode=true;
 if(process.argv[2]=="--localMode")
 {
   localmode=true;
@@ -76,10 +77,13 @@ function run(){
     },250);
 
     //go crazy after 30 secs
-    setTimeout(function(){
-        setInterval(crazy,20000);
-      }
-    ,5200);
+    if(burstMode)
+    {
+      setTimeout(function(){
+          setInterval(crazy,20000);
+        }
+      ,5200);
+    }
 };
 
 function crazy(){
