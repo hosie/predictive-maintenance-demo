@@ -11,7 +11,7 @@ call mqsicreateexecutiongroup TESTNODE_John -e default
 @rem set up environment for SAP nodes
 call mqsichangeproperties TESTNODE_John -c EISProviders -o SAP -n nativeLibs,jarsURL -v "C:\John\sapjco3\308\64","C:\John\sapjco3\308\64"
 @rem pcrockers org call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-3siysh-fiux9wzyex" -p "bftwcV9@*TZy(iwF)1"
-call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-jk6y1t-jteajwlvon" -p "5t?brtl8d+WCUr+VGC"
+call mqsisetdbparms TESTNODE_John -n MQTT::iotFoundation -u "a-88xzb2-fcffsvhwxb" -p "jRZ!fA)Iw2GDH5eKEm"
 call mqsicreatepolicy TESTNODE_John -t MQTTPublish -f ..\policy\InternalBroker.policy -l InternalBroker
 @rem use IoT cloud 
 call mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents

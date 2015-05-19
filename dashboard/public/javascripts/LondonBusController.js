@@ -27,14 +27,14 @@ function londonBusController($rootScope,$scope,$http){
   $scope.bus=bus;
 /*Pcrockers org
     var IoT = {
-    host : "3siysh.messaging.internetofthings.ibmcloud.com",
+    host : "88xzb2.messaging.internetofthings.ibmcloud.com",
     port : 1883,
-    clientId : "a:3siysh:dash",
-    userName : "a-3siysh-fiux9wzyex",
-    password : "bftwcV9@*TZy(iwF)1",
+    clientId : "a:88xzb2:dash",
+    userName : "a-88xzb2-fcffsvhwxb",
+    password : "jRZ!fA)Iw2GDH5eKEm",
     topic : "iot-2/type/+/id/+/evt/+/fmt/+"
-  };
-  */
+  };*/
+  
 /*jhosies org*/
   var IoT = {
     host : "jk6y1t.messaging.internetofthings.ibmcloud.com",

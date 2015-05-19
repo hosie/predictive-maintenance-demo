@@ -8,11 +8,20 @@ auth-token=6a4njnp3+gk2x0R8BH
 				 
 */
 
+/*
 var hostname = 'jk6y1t.messaging.internetofthings.ibmcloud.com';
 var clientId = 'd:jk6y1t:busSimulator:fakeBus01';
 var password = '6a4njnp3+gk2x0R8BH';
 var userName = 'use-token-auth';
 var port     = 1883;
+*/
+/**/
+var hostname = "88xzb2.messaging.internetofthings.ibmcloud.com";
+var clientId = "d:88xzb2:busSimulator:fakeBus01";
+var password = "PfROa-fEwHqKATU6aJ";
+var userName = 'use-token-auth';
+var port     = 1883;
+
 
 var localmode=false;
 if(process.argv[2]=="--localMode")
@@ -50,7 +59,9 @@ var userName = 'use-token-auth';
 function run(){
 
   var mqtt    = require('mqtt');
-  client  = mqtt.connect('mqtt://' + userName +':'+ password + '@' + hostname + ':' + port + '?clientId=' + clientId );
+  var connectString = 'mqtt://' + userName +':'+ password + '@' + hostname + ':' + port + '?clientId=' + clientId ;
+  console.log("connecting to " + connectString);
+  client  = mqtt.connect(connectString);
 
     setInterval(function(){
       if(milleage<49000)
@@ -85,5 +96,5 @@ function crazy(){
     },5000);
 }
 
-setTimeout(run,10000);
+setTimeout(run,100);
 //client.end();
