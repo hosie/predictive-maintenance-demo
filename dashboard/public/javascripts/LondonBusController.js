@@ -25,7 +25,7 @@ function londonBusController($rootScope,$scope,$http){
   $scope.bleeps=$rootScope.bleeps;
 
   $scope.bus=bus;
-/*Pcrockers org
+/*Pcrockers org*/
     var IoT = {
     host : "88xzb2.messaging.internetofthings.ibmcloud.com",
     port : 1883,
@@ -33,9 +33,9 @@ function londonBusController($rootScope,$scope,$http){
     userName : "a-88xzb2-fcffsvhwxb",
     password : "jRZ!fA)Iw2GDH5eKEm",
     topic : "iot-2/type/+/id/+/evt/+/fmt/+"
-  };*/
+  };
   
-/*jhosies org*/
+/*jhosies org
   var IoT = {
     host : "jk6y1t.messaging.internetofthings.ibmcloud.com",
     port : 1883,
@@ -44,7 +44,7 @@ function londonBusController($rootScope,$scope,$http){
     password : "5t?brtl8d+WCUr+VGC",
     topic : "iot-2/type/+/id/+/evt/+/fmt/+"
   };
-
+*/
   var client = new Paho.MQTT.Client(IoT.host, IoT.port, IoT.clientId);
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
