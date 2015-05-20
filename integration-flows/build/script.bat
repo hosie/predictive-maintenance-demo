@@ -34,3 +34,5 @@ call mqsichangeflowstats TESTNODE_John -g -c active -j -k PredictiveMaintenance 
 @rem deploy policy
 @rem mqsicreatepolicy TESTNODE_John -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents
 @rem mqsichangeproperties TESTNODE_John -e default -o ComIbmJVMManager -n jvmDebugPort -v 1818
+
+rm C:\Users\IBM_ADMIN\Desktop\VehiclePartReplacements\Today.csv
