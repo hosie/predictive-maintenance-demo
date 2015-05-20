@@ -232,7 +232,7 @@
            y="27"
            x="11" />
       </g>
-                    
+      <g ng-controller="LondonBusController">              
       <path ng-if="bleeps.bleep1"
          style="fill:none;fill-rule:evenodd;stroke:#d9182d;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 90.044156,109.01051 c 7.896955,0.23226 7.896955,6.9679 7.896955,6.9679"
@@ -251,6 +251,7 @@
          id="path4212"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cc" />
+              </g>
     </g>
     <g
        id="g6689"
@@ -389,7 +390,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div ng-if="showCharts==false" class="row">
         <div class="col-md-3">  
           <div class="panel panel-default">
             <div class="panel-body">

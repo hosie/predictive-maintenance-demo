@@ -14,18 +14,15 @@ furnished to do so, subject to the following conditions:
       John Hosie - initial implementation 
 */
 
-
-function londonBusController($rootScope,$scope,$http){
-  var bus =  {
-    status:"disconnected",
-    milleage:0,
-    msgs:[]
+function londonBusEventFactory(){
+  var factory = {
+    callbacks:[],
+    on:function(callback){
+      this.callbacks.push(callback);
+    }
   };
-  $rootScope.bleeps={};
-  $scope.bleeps=$rootScope.bleeps;
 
-  $scope.bus=bus;
-/*Pcrockers org*/
+  /*Pcrockers org*/
     var IoT = {
     host : "88xzb2.messaging.internetofthings.ibmcloud.com",
     port : 1883,
@@ -55,9 +52,7 @@ function londonBusController($rootScope,$scope,$http){
   });  
 
   function onConnect() {
-    $scope.$apply(function(){
-      bus.status = "connected";
-    });
+    
     // Once a connection has been made, make a subscription and send a message.
     
     client.subscribe(IoT.topic);
@@ -69,7 +64,39 @@ function londonBusController($rootScope,$scope,$http){
     if (responseObject.errorCode !== 0)
   	console.log("onConnectionLost:"+responseObject.errorMessage);
   };
+
   function onMessageArrived(message) {
+    try
+    {
+
+      factory.callbacks.forEach(function(callback){
+        callback(message);
+      });
+
+    } catch (err)
+    {
+      console.log("error in onMessageArrived");
+      console.dir(err);
+    }
+  };
+
+  return factory;
+  	
+}
+
+function londonBusController($rootScope,$scope,LondonBusEventFactory){
+  var bus =  {
+    status:"disconnected",
+    milleage:0,
+    msgs:[]
+  };
+  $rootScope.bleeps={};
+  //$scope.bleeps=$rootScope.bleeps;
+  $scope.bleeps={};
+
+  $scope.bus=bus;
+
+  LondonBusEventFactory.on( function(message){
     $scope.$apply(function(){
       $scope.bleeps.bleep1=true;
       setTimeout(function(){
@@ -78,7 +105,6 @@ function londonBusController($rootScope,$scope,$http){
           $scope.bleeps.bleep2=true;
         });
         setTimeout(function(){
-
 
             $scope.$apply(function(){
               $scope.bleeps.bleep1=false;
@@ -102,12 +128,11 @@ function londonBusController($rootScope,$scope,$http){
 
 
       },50);
-      bus.msgs.push(message.payloadString);
+      //bus.msgs.push(message.payloadString);
       var messageObj = JSON.parse(message.payloadString);
       bus.milleage = messageObj.d.mt;
     });
-
-  };	
+  });
 
     
 };

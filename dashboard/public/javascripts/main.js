@@ -15,22 +15,24 @@ furnished to do so, subject to the following conditions:
 */
 var app = angular.module('PredictitiveMaintenanceDashboardApp',['iibWidgets','ui.bootstrap']);
 
-app.controller('LondonBusController',londonBusController);
 app.controller('MainController',mainController);
 app.controller('IntegrationBusController',integrationBusController);
 app.controller('DepotController',["$scope","DepotEventFactory",depotController]);
 app.factory('AssetRecordFactory',assetRecordFactory);
 app.factory('DepotEventFactory',depotEventFactory);
 app.factory('WarehouseEventFactory',warehouseEventFactory);
+app.factory('LondonBusEventFactory',londonBusEventFactory);
+app.controller('LondonBusController',["$rootScope","$scope","LondonBusEventFactory",londonBusController]);
 app.controller('AssetRecordController',["$scope","AssetRecordFactory",assetRecordController]);
 app.controller('WarehouseController',["$scope","WarehouseEventFactory",warehouseController]);
 app.directive('pmdDbInvoke',["$rootScope","AssetRecordFactory",pmdDbInvokeDirective]);
 app.directive('pmdDepotEvent',["$rootScope","DepotEventFactory",pmdDepotEventDirective]);
 app.directive('pmdWarehouseEvent',["$rootScope","WarehouseEventFactory",pmdWarehouseEventDirective]);
 function mainController($scope){
+  
   $scope.showCharts=false;
   $scope.toggleCharts=function(){
-    $scope.showCharts=true;
+    $scope.showCharts= !$scope.showCharts;
   }
 }
 function pmdDbInvokeDirective($rootScope,AssetRecordFactory){
