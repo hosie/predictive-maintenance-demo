@@ -7,12 +7,12 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj16/OrderParts.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj30/OrderParts.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="146,204" queueName="PARTS.ORDER.REQUEST" connection="SERVER" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="146,204" queueName="PARTS.ORDER.REQUEST" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="658,208" queueName="PARTS.ORDER.RESPONSE" connection="SERVER" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="658,208" queueName="PARTS.ORDER.RESPONSE" destinationQueueManagerName="IB9QMGR">
         <translation xmi:type="utility:ConstantString" string="Response"/>
-        <monitorEvents eventSourceDescription="In terminal" eventSourceName="Response.terminal.in" eventIdentity="Response.InTerminal">
+        <monitorEvents eventEnabled="false" eventSourceDescription="In terminal" eventSourceName="Response.terminal.in" eventIdentity="Response.InTerminal">
           <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
             <globalTransactionCorrelator/>
             <parentTransactionCorrelator/>
@@ -28,14 +28,24 @@
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="308,204" mappingExpression="msl://{default}#OrderParts_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
+        <monitorEvents eventSourceDescription="In terminal" eventSourceName="Mapping.terminal.in" eventIdentity="Mapping.InTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent" eventUOW="none">
+            <globalTransactionCorrelator/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="none" bitstreamContent="none"/>
+            <eventName literal="Mapping.InTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="415,50" queueName="PARTS.ORDER.FAULT" connection="SERVER" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="415,50" queueName="PARTS.ORDER.FAULT" destinationQueueManagerName="IB9QMGR">
         <translation xmi:type="utility:ConstantString" string="error"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
