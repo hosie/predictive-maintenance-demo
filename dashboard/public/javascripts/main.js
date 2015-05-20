@@ -17,13 +17,117 @@ var app = angular.module('PredictitiveMaintenanceDashboardApp',['ui.bootstrap'])
 
 app.controller('LondonBusController',londonBusController);
 app.controller('IntegrationBusController',integrationBusController);
-app.controller('DepotController',depotController);
+app.controller('DepotController',["$scope","DepotEventFactory",depotController]);
 app.factory('AssetRecordFactory',assetRecordFactory);
+app.factory('DepotEventFactory',depotEventFactory);
+app.factory('WarehouseEventFactory',warehouseEventFactory);
 app.controller('AssetRecordController',["$scope","AssetRecordFactory",assetRecordController]);
-app.controller('WarehouseController',warehouseController);
+app.controller('WarehouseController',["$scope","WarehouseEventFactory",warehouseController]);
 app.directive('pmdDbInvoke',["$rootScope","AssetRecordFactory",pmdDbInvokeDirective]);
+app.directive('pmdDepotEvent',["$rootScope","DepotEventFactory",pmdDepotEventDirective]);
+app.directive('pmdWarehouseEvent',["$rootScope","WarehouseEventFactory",pmdWarehouseEventDirective]);
 
 function pmdDbInvokeDirective($rootScope,AssetRecordFactory){
+    var iibSubscriber=iibSubscriber; 
+    
+    return {
+      restrict: 'EAC',
+      scope:{        
+      },
+      link: link
+    };
+
+    function link(scope,iElement,iAttrs){
+      AssetRecordFactory.on(function(){
+        d3.select(iElement[0]).append("circle")
+          .attr("r",8)
+          .attr("cx",315)
+          .attr("cy",850)      
+          .attr("fill","#d9182d")
+          .transition()
+          .duration(300)
+          .delay(0)
+          .attr("cx",530)
+          .each("end",function(){
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .delay(0)
+            .attr("cy",740)
+            .each("end",function(){
+              d3.select(this)
+              .transition()
+              .duration(300)            
+              .delay(0)
+              .attr("r",85)
+              .attrTween("opacity",function(d,i,a){
+                return d3.interpolate(1, 0.01)
+              })
+              .each("end",function(){
+                d3.select(this)
+                .transition()
+                .duration(200)            
+                .delay(0)
+                .attr("opacity",0);
+              });              
+            });            
+          });
+      });
+    }
+};
+
+
+function pmdDepotEventDirective($rootScope,DepotEventFactory){
+    var iibSubscriber=iibSubscriber; 
+    
+    return {
+      restrict: 'EAC',
+        //TODO - can we derive these scope attributes from the widgetSpec factory?
+      scope:{        
+      },
+      link: link
+    };
+
+    function link(scope,iElement,iAttrs){
+      DepotEventFactory.on(function(){
+        d3.select(iElement[0]).append("circle")
+          .attr("r",8)
+          .attr("cx",315)
+          .attr("cy",850)      
+          .attr("fill","#d9182d")
+          .transition()
+          .duration(300)
+          .delay(0)
+          .attr("cx",108)
+          .each("end",function(){
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .delay(0)
+            .attr("cy",950)
+            .each("end",function(){
+              d3.select(this)
+              .transition()
+              .duration(300)            
+              .delay(0)
+              .attr("r",85)
+              .each("end",function(){
+                d3.select(this)
+                .transition()
+                .duration(200)            
+                .delay(0)
+                .attrTween("opacity",function(d,i,a){
+                  return d3.interpolate(1, 0.01)
+                });
+              });              
+            });            
+          });
+      });
+    }
+};
+
+
+function pmdWarehouseEventDirective($rootScope,WarehouseEventFactory){
     var iibSubscriber=iibSubscriber; 
     
     return {
@@ -36,21 +140,40 @@ function pmdDbInvokeDirective($rootScope,AssetRecordFactory){
 
     function link(scope,iElement,iAttrs){
       //$rootScope.$watch('assetLookUps'
-      AssetRecordFactory.on(function(){
+      WarehouseEventFactory.on(function(){
         d3.select(iElement[0]).append("circle")
           .attr("r",8)
-          .attr("cx",314.34583)
-          .attr("cy",851.01007)      
-          .attr("fill","gray")
+          .attr("cx",315)
+          .attr("cy",850)      
+          .attr("fill","#d9182d")
           .transition()
-          .duration(1000)
-          .attr("r",85)
-          .attr("cx",530.15063)
-          .attr("cy",742.94342)
+          .duration(300)
+          .delay(0)
+          .attr("cx",530)
           .each("end",function(){
-            d3.select(this).transition().duration(200).attr("r",0);
-          })
-          ;
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .delay(0)
+            .attr("cy",950)
+            .each("end",function(){
+              d3.select(this)
+              .transition()
+              .duration(300)            
+              .delay(0)
+              .attr("r",85)
+              .each("end",function(){
+                d3.select(this)
+                .transition()
+                .duration(200)            
+                .delay(0)
+                .attrTween("opacity",function(d,i,a){
+                  return d3.interpolate(1, 0.01)
+                });
+              });              
+            });            
+          });
       });
     }
 };
+

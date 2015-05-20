@@ -22,7 +22,6 @@ function assetRecordFactory(){
     callbacks:[],
     on:function(callback){
       this.callbacks.push(callback);
-      console.log("on called");
     }
   };
 
@@ -51,7 +50,6 @@ function assetRecordFactory(){
       $scope.status = "connected";
     });*/
     // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
     
     var options = {
               qos:0,
@@ -69,10 +67,10 @@ function assetRecordFactory(){
     if (responseObject.errorCode !== 0)
   	console.log("onConnectionLost:"+responseObject.errorMessage);
   };
+
   function onMessageArrived(message) {
     try
     {
-      console.log("onMessageArrived flow stats:");//+message.payloadString);
   
       factory.callbacks.forEach(function(callback){
         callback();
@@ -80,12 +78,11 @@ function assetRecordFactory(){
       
     } catch (err)
     {
-
       console.log("error in onMessageArrived");
       console.dir(err);
     }
-  };	
-  console.log("after connect");
+  };
+  	
   return factory;
 
 }
@@ -95,7 +92,7 @@ function assetRecordController($scope,AssetRecordFactory){
   $scope.numberOfRecordReads=0;
   AssetRecordFactory.on(function(){
     $scope.$apply(function(){
-        $scope.numberOfRecordReads = $scope.numberOfRecordReads + 0.5;
+        $scope.numberOfRecordReads = $scope.numberOfRecordReads +1;
         
         $scope.assetLookUps=true;
         setTimeout(function(){

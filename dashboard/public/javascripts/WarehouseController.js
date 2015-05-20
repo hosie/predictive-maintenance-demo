@@ -17,10 +17,12 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function warehouseController($scope,$http){
-  var assetManagement =  {
-    status:"disconnected",
-    lookups:0
+function warehouseEventFactory(){
+  var factory = {
+    callbacks:[],
+    on:function(callback){
+      this.callbacks.push(callback);
+    }
   };
 
  var IIB = {
@@ -29,8 +31,7 @@ function warehouseController($scope,$http){
     clientId : "warehouse",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/OrderParts"            
   };
-  $scope.numberOfOrders=0;
-
+  
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
@@ -39,51 +40,59 @@ function warehouseController($scope,$http){
   });  
 
   function onConnect() {
-    $scope.$apply(function(){
-      $scope.status = "connected";
-    });
-    // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
     
+    // Once a connection has been made, make a subscription and send a message.
+
     var options = {
               qos:0,
               onFailure: function(responseObject) {
                       console.log("failure");
               }
           };
-          
+
     client.subscribe(IIB.topic,options);
-    
+
   };
   function onConnectionLost(responseObject) {
 
     $scope.status="connection lost";
     if (responseObject.errorCode !== 0)
-  	console.log("onConnectionLost:"+responseObject.errorMessage);
+    console.log("onConnectionLost:"+responseObject.errorMessage);
   };
+  
   function onMessageArrived(message) {
     try
     {
-      console.log("onMessageArrived flow stats:");//+message.payloadString);
-  
-      $scope.$apply(function(){
-        $scope.numberOfOrders++;
-        $scope.warehouseOrder=true;
-        setTimeout(function(){
-          $scope.$apply(function(){
-            $scope.warehouseOrder=false;
-          });
-        },3000);
-        
+
+      factory.callbacks.forEach(function(callback){
+        callback();
       });
+
     } catch (err)
     {
-
       console.log("error in onMessageArrived");
       console.dir(err);
     }
-  };	
-  console.log("after connect");
+  };
 
-    
+  return factory;
+
+}
+
+
+function warehouseController($scope,WarehouseEventFactory){
+  $scope.numberOfOrders=0;
+
+  WarehouseEventFactory.on(function(){
+    $scope.$apply(function(){
+      $scope.numberOfOrders++;
+      $scope.warehouseOrder=true;
+      setTimeout(function(){
+        $scope.$apply(function(){
+          $scope.warehouseOrder=false;
+        });
+      },3000);
+
+    });
+  });
 };

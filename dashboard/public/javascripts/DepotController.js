@@ -17,8 +17,14 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function depotController($scope){
-  
+function depotEventFactory(){
+  var factory = {
+    callbacks:[],
+    on:function(callback){
+      this.callbacks.push(callback);
+    }
+  };
+
   var IIB = {
     host : "localhost",
     port : 4414,
@@ -32,14 +38,8 @@ function depotController($scope){
   client.connect({
     onSuccess:onConnect
   });  
-  $scope.numberOfServicesScheduled=0;
-
+  
   function onConnect() {
-    $scope.$apply(function(){
-      $scope.status = "connected";
-    });
-    // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
     
     var options = {
               qos:0,
@@ -60,27 +60,35 @@ function depotController($scope){
   function onMessageArrived(message) {
     try
     {
-      console.log("onMessageArrived flow stats:");//+message.payloadString);
-      
-  
-  
-      $scope.$apply(function(){
-        $scope.numberOfServicesScheduled++;
-        $scope.newServiceScheduled=true;
-        setTimeout(function(){
-          $scope.$apply(function(){
-            $scope.newServiceScheduled=false;
-          });
-        },3000);
-        
+
+      factory.callbacks.forEach(function(callback){
+        callback();
       });
+
     } catch (err)
     {
-
       console.log("error in onMessageArrived");
       console.dir(err);
     }
-  };	
-  console.log("after connect");
-    
-};
+  };
+
+  return factory;
+
+}
+
+function depotController($scope,DepotEventFactory){
+
+  $scope.numberOfServicesScheduled=0;
+
+  DepotEventFactory.on(function(){
+    $scope.$apply(function(){
+      $scope.numberOfServicesScheduled++;
+      $scope.newServiceScheduled=true;
+      setTimeout(function(){
+        $scope.$apply(function(){
+          $scope.newServiceScheduled=false;
+        });
+      },3000);
+    });    
+  });    
+}
