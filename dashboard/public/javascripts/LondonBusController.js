@@ -59,7 +59,6 @@ function londonBusController($rootScope,$scope,$http){
       bus.status = "connected";
     });
     // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
     
     client.subscribe(IoT.topic);
     
@@ -71,22 +70,17 @@ function londonBusController($rootScope,$scope,$http){
   	console.log("onConnectionLost:"+responseObject.errorMessage);
   };
   function onMessageArrived(message) {
-    //console.log("onMessageArrived:"+message.payloadString);
     $scope.$apply(function(){
-      //console.log("bleep1");
       $scope.bleeps.bleep1=true;
       setTimeout(function(){
 
         $scope.$apply(function(){
-          //console.log("bleep2");
-          //$scope.bleeps.bleep1=false;
           $scope.bleeps.bleep2=true;
         });
         setTimeout(function(){
 
 
             $scope.$apply(function(){
-              //console.log("bleep3");
               $scope.bleeps.bleep1=false;
               $scope.bleeps.bleep3=true;
             });
@@ -95,7 +89,6 @@ function londonBusController($rootScope,$scope,$http){
               $scope.$apply(function(){
                 $scope.bleeps.bleep2=false;
 
-                //console.log("bleep off");
               });
             },50);
             setTimeout(function(){
@@ -103,7 +96,6 @@ function londonBusController($rootScope,$scope,$http){
               $scope.$apply(function(){
                 $scope.bleeps.bleep3=false;
 
-                //console.log("bleep off");
               });
             },50);
         },50);
@@ -112,14 +104,10 @@ function londonBusController($rootScope,$scope,$http){
       },50);
       bus.msgs.push(message.payloadString);
       var messageObj = JSON.parse(message.payloadString);
-      //console.log("parsedMessag:");
-      //console.dir(messageObj);
       bus.milleage = messageObj.d.mt;
     });
 
-    //client.disconnect(); 
   };	
-  console.log("after connect");
 
     
 };

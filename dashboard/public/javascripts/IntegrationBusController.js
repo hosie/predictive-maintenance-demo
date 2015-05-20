@@ -53,7 +53,6 @@ function integrationBusController($scope,$http){
       IIBListener.status = "connected";
     });
     // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
     
     var options = {
               qos:0,
@@ -74,7 +73,6 @@ function integrationBusController($scope,$http){
   function onMessageArrived(message) {
     try
     {
-      console.log("onMessageArrived:");//+message.payloadString);
       var resourceStatsObject = JSON.parse(message.payloadString);
       resourceStatsObject.ResourceStatistics.ResourceType.forEach(function(resourceType,i){
         if(resourceType.name == "MQTT")
@@ -98,8 +96,6 @@ function integrationBusController($scope,$http){
                   IIBListener.File.BytesWritten = resourceInstance.BytesWritten;
                 });
               }
-              //console.log("file resource ");
-              //console.dir(resourceInstance);
             });
         }else if(resourceType.name == "Sockets")
         {
@@ -113,11 +109,9 @@ function integrationBusController($scope,$http){
               }
 
               
-              //console.log("socket resource ");
-              //console.dir(resourceInstance);
             });
         }else{
-          console.log("untracked resource manager " + resourceType.name);
+          //console.log("untracked resource manager " + resourceType.name);
         }
       });
   
@@ -132,6 +126,5 @@ function integrationBusController($scope,$http){
       console.dir(err);
     }
   };	
-  console.log("after connect");
     
 };
