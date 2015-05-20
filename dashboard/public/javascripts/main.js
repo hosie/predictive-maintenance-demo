@@ -13,9 +13,10 @@ furnished to do so, subject to the following conditions:
   Contributors:
       John Hosie - initial implementation 
 */
-var app = angular.module('PredictitiveMaintenanceDashboardApp',['ui.bootstrap']);
+var app = angular.module('PredictitiveMaintenanceDashboardApp',['iibWidgets','ui.bootstrap']);
 
 app.controller('LondonBusController',londonBusController);
+app.controller('MainController',mainController);
 app.controller('IntegrationBusController',integrationBusController);
 app.controller('DepotController',["$scope","DepotEventFactory",depotController]);
 app.factory('AssetRecordFactory',assetRecordFactory);
@@ -26,7 +27,12 @@ app.controller('WarehouseController',["$scope","WarehouseEventFactory",warehouse
 app.directive('pmdDbInvoke',["$rootScope","AssetRecordFactory",pmdDbInvokeDirective]);
 app.directive('pmdDepotEvent',["$rootScope","DepotEventFactory",pmdDepotEventDirective]);
 app.directive('pmdWarehouseEvent',["$rootScope","WarehouseEventFactory",pmdWarehouseEventDirective]);
-
+function mainController($scope){
+  $scope.showCharts=false;
+  $scope.toggleCharts=function(){
+    $scope.showCharts=true;
+  }
+}
 function pmdDbInvokeDirective($rootScope,AssetRecordFactory){
     var iibSubscriber=iibSubscriber; 
     
