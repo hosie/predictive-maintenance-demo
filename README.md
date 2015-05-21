@@ -1,3 +1,6 @@
+# predictitive-maintenance-demo
+Demo of IBM Integration Bus and IBM Internet of Things Foundation
+
 Prereqs
     node.js and npm
     IIB V10
@@ -46,3 +49,4 @@ To demonstrate this scenario
     11) Open the toolkit and import the projects in .\integration-flows\ad
             Poke around and show the JSON mapping etc and how to create a DFDL schema for CSV
             Using the test messages in .\integration-flows\ad\Test drive one of the flows (e.g. DecideAction) using the AD test tools ( flow exerciser)
+
