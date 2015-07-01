@@ -17,7 +17,7 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function warehouseEventFactory(){
+function warehouseEventFactory(iibConnectionFactory){
   var factory = {
     callbacks:[],
     on:function(callback){
@@ -26,8 +26,8 @@ function warehouseEventFactory(){
   };
 
  var IIB = {
-    host : "localhost",
-    port : 4414,
+    host : iibConnectionFactory.host,
+    port : iibConnectionFactory.port,
     clientId : "warehouse",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/OrderParts"            
   };

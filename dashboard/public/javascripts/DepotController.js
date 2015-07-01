@@ -17,7 +17,7 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function depotEventFactory(){
+function depotEventFactory(iibConnectionFactory){
   var factory = {
     callbacks:[],
     on:function(callback){
@@ -26,8 +26,8 @@ function depotEventFactory(){
   };
 
   var IIB = {
-    host : "localhost",
-    port : 4414,
+    host : iibConnectionFactory.host,
+    port : iibConnectionFactory.port,
     clientId : "depot",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ScheduleMaintenance"            
   };

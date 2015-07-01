@@ -16,7 +16,7 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function assetRecordFactory(){
+function assetRecordFactory(iibConnectionFactory){
 
   var factory = {
     callbacks:[],
@@ -31,8 +31,8 @@ function assetRecordFactory(){
   };
 
   var IIB = {
-    host : "localhost",
-    port : 4414,
+    host : iibConnectionFactory.host,
+    port : iibConnectionFactory.port,
     clientId : "assetRecord",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ReadAssetRecord"            
   };

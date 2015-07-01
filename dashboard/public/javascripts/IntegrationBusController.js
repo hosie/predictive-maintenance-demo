@@ -16,7 +16,7 @@ furnished to do so, subject to the following conditions:
 */
 
 
-function integrationBusController($scope,$http){
+function integrationBusController($scope,$http,iibConnectionFactory){
   var IIBListener =  {
     status:"disconnected",
     msgs:[],
@@ -35,8 +35,8 @@ function integrationBusController($scope,$http){
   $scope.IIBListener=IIBListener;
 
   var IIB = {
-    host : "localhost",
-    port : 4414,
+    host : iibConnectionFactory.host,
+    port : iibConnectionFactory.port,
     clientId : "dashboard",    
     topic : "IBM/IntegrationBus/TESTNODE_John/Statistics/JSON/Resource/#"            
   };
