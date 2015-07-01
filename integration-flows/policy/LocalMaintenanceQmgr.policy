@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><policy type="MQEndpoint">    <policyProperties>        <mqConnectionDetailsPolicy>            <connection>SERVER</connection>            <destinationQueueManagerName>PMDEMO_QMGR</destinationQueueManagerName>            <useSSL>false</useSSL>        </mqConnectionDetailsPolicy>    </policyProperties></policy>

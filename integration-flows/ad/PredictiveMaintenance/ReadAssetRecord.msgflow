@@ -7,7 +7,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj16/ReadAssetRecord.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj30/ReadAssetRecord.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="52,41" queueName="FILTERED.EVENTS" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="52,41" queueName="FILTERED.EVENTS" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON" policyUrl="/apiv1/policy/MQEndpoint/LocalMaintenanceQmgr">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
         <monitorEvents eventSourceDescription="Transaction start" eventSourceName="MQ Input.transaction.Start" eventIdentity="MQ Input.TransactionStart">
           <eventXMLDoc xmi:type="mbmonitor:MonitorEvent" eventUOW="independent">
@@ -23,7 +23,7 @@
       <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="371,105" URLSpecifier="http://localhost:3002/api/VehicleParts" httpMethod="GET" httpVersion="1.1" protocol="TLS" messageDomainProperty="JSON" replaceInputMsgWithWSResponse="false" responseMsgLocationInTree="OutputRoot.JSON.Data.d.fittedParts">
         <translation xmi:type="utility:ConstantString" string="Get Parts Record"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="693,105" queueName="ASSET.RECORD" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="693,105" queueName="ASSET.RECORD" destinationQueueManagerName="IB9QMGR" policyUrl="/apiv1/policy/MQEndpoint/LocalMaintenanceQmgr">
         <translation xmi:type="utility:ConstantString" string="MQ Output"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="173,151" computeExpression="esql://routine/#ReadAssetRecord_Build_HTTP_Request.Main" computeMode="destination">

@@ -1,7 +1,13 @@
-def ql(FILTERED.EVENTS)
-def ql(ASSET.RECORD)
-def ql(PARTS.ORDER.REQUEST)
-def ql(MAINTENANCE.SCHEDULE)
-def ql(PARTS.ORDER.FAULT)
-def ql(PARTS.ORDER.FAULT)
-def ql(ERROR)
+* FilterEvents has no MQ endpoints of its own
+* for ReadAssetRecord
+def ql(FILTERED.EVENTS) replace
+* for DecideAction
+def ql(ASSET.RECORD) replace
+* for OrderParts
+def ql(PARTS.ORDER.REQUEST) replace
+def ql(PARTS.ORDER.RESPONSE) replace
+def ql(PARTS.ORDER.FAULT) replace
+* for ScheduleMaintenance
+def ql(MAINTENANCE.SCHEDULE) replace
+* for generic ErrorHandler subflow
+def ql(ERROR) replace
