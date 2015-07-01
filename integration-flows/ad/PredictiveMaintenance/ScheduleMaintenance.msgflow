@@ -7,7 +7,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj16/ScheduleMaintenance.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj30/ScheduleMaintenance.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="111,164" queueName="MAINTENANCE.SCHEDULE" connection="SERVER" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="111,164" queueName="MAINTENANCE.SCHEDULE" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON" policyUrl="/apiv1/policy/MQEndpoint/LocalMaintenanceQmgr">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
       <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="474,172" outputDirectory="C:\Users\IBM_ADMIN\Desktop\VehiclePartReplacements" outputFilename="Today.csv" writeMode="writeInPlace">

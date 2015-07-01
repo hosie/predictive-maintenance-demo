@@ -7,10 +7,10 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj16/OrderParts.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PredictiveMaintenance/icons/full/obj30/OrderParts.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="146,204" queueName="PARTS.ORDER.REQUEST" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="146,204" queueName="PARTS.ORDER.REQUEST" destinationQueueManagerName="IB9QMGR" messageDomainProperty="JSON" policyUrl="/apiv1/policy/MQEndpoint/LocalMaintenanceQmgr">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="658,208" queueName="PARTS.ORDER.RESPONSE" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="658,208" queueName="PARTS.ORDER.RESPONSE" destinationQueueManagerName="IB9QMGR" policyUrl="/apiv1/policy/MQEndpoint/LocalMaintenanceQmgr">
         <translation xmi:type="utility:ConstantString" string="Response"/>
         <monitorEvents eventEnabled="false" eventSourceDescription="In terminal" eventSourceName="Response.terminal.in" eventIdentity="Response.InTerminal">
           <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
@@ -39,7 +39,7 @@
           </eventXMLDoc>
         </monitorEvents>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="415,50" queueName="PARTS.ORDER.FAULT" destinationQueueManagerName="IB9QMGR">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="415,50" queueName="PARTS.ORDER.FAULT" destinationQueueManagerName="IB9QMGR" policyUrl="/apiv1/policy/MQEndpoint/LocalMaintenanceQmgr">
         <translation xmi:type="utility:ConstantString" string="error"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
