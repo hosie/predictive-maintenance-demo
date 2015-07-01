@@ -53,6 +53,7 @@ call mqsisetdbparms %INTEGRATION_NODE_NAME% -n MQTT::iotFoundation -u "a-88xzb2-
 call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t MQTTSubscribe -f ..\policy\BusEvents.policy -l BusEvents
 @rem setup other policies to match configuration of local integration node
 call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t MQTTPublish -f ..\policy\InternalBroker.policy -l InternalBroker
+@rem policy to control the MQ nodes connecting flows together
 call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t MQEndpoint -f ..\policy\LocalMaintenanceQmgr.policy -l LocalMaintenanceQmgr
 call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t WorkloadManagement -l smoothing -f ..\policy\smoothing.policy
 @rem local test mode call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t MQTTSubscribe -f ..\policy\BusEvents.local.policy -l BusEvents
