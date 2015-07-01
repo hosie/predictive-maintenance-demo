@@ -1,0 +1,17 @@
+{
+  "name": "device",
+  "version": "1.0.0",
+  "description": "device simulator",
+  "main": "app.js",
+  "dependencies": {
+    "mqtt": "^1.0.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "prestart": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
