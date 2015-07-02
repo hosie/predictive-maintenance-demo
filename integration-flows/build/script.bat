@@ -59,6 +59,8 @@ call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t WorkloadManagement -l smoothing
 @rem local test mode call mqsicreatepolicy %INTEGRATION_NODE_NAME% -t MQTTSubscribe -f ..\policy\BusEvents.local.policy -l BusEvents
 call mqsichangeproperties %INTEGRATION_NODE_NAME% -b pubsub -o BusinessEvents/MQTT -n policyUrl -v /MQTTPublish/InternalBroker.policy
 call mqsichangeproperties %INTEGRATION_NODE_NAME% -b pubsub -o BusinessEvents/MQTT -n enabled -v true
+@rem hack to make snapshot flow statistics refresh faster, so the graphs update better in burst mode
+echo set MQSI_STATS_SNAPSHOTTIME=5 > C:\ProgramData\IBM\MQSI\common\profiles\statsintervaloverride.cmd
 call mqsistop %INTEGRATION_NODE_NAME%
 call mqsistart %INTEGRATION_NODE_NAME%
 

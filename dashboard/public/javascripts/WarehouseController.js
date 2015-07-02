@@ -29,7 +29,7 @@ function warehouseEventFactory(iibConnectionFactory){
     host : iibConnectionFactory.host,
     port : iibConnectionFactory.port,
     clientId : "warehouse",    
-    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/OrderParts"            
+    topic : "IBM/IntegrationBus/"+iibConnectionFactory.integrationNodeName+"/Monitoring/default/OrderParts"            
   };
   
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);

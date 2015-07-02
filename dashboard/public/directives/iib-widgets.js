@@ -340,7 +340,7 @@ includePaho();
         //TODO get topic from widget - even better, get metric names ( eg. flow.cpu...) from widget and use separate facotry to convert to topic
         //TODO temporary hack to make IoT demo work
         widget.data=[];      
-        var topic = "IBM/IntegrationBus/TESTNODE_John/Statistics/JSON/+/+/applications/+/messageflows/" + widget.iibFlowName;
+        var topic = "IBM/IntegrationBus/PMDEMO_NODE/Statistics/JSON/+/+/applications/+/messageflows/" + widget.iibFlowName;
         iibSubscriber.subscribe(topic,widget,function(message){
           var statsMessage = JSON.parse(message.payloadString);
           
@@ -377,7 +377,7 @@ includePaho();
       console.log("factory subscribing to " + topic);
 
       var host       = scope.iibMqttHost || "localhost";
-      var portString = scope.iibMqttPort || "4414";
+      var portString = scope.iibMqttPort || "4569";
       var port       =  parseInt(portString);
 
       //TODO - make this more unique

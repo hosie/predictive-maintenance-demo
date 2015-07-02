@@ -38,7 +38,7 @@ function integrationBusController($scope,$http,iibConnectionFactory){
     host : iibConnectionFactory.host,
     port : iibConnectionFactory.port,
     clientId : "dashboard",    
-    topic : "IBM/IntegrationBus/TESTNODE_John/Statistics/JSON/Resource/#"            
+    topic : "IBM/IntegrationBus/"+iibConnectionFactory.integrationNodeName+"/Statistics/JSON/Resource/#"            
   };
 
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);

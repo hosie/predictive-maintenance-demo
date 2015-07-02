@@ -34,7 +34,7 @@ function assetRecordFactory(iibConnectionFactory){
     host : iibConnectionFactory.host,
     port : iibConnectionFactory.port,
     clientId : "assetRecord",    
-    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ReadAssetRecord"            
+    topic : "IBM/IntegrationBus/"+iibConnectionFactory.integrationNodeName+"/Monitoring/default/ReadAssetRecord"            
   };
 
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);

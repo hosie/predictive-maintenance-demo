@@ -31,7 +31,8 @@ app.directive('pmdWarehouseEvent',["$rootScope","WarehouseEventFactory",pmdWareh
 app.factory('iibConnectionFactory',function(){
   return {
     host : "localhost",
-    port : 4414
+    port : 4569,
+    integrationNodeName : "PMDEMO_NODE"
   };
 });
 

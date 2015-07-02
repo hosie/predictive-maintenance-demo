@@ -29,7 +29,7 @@ function depotEventFactory(iibConnectionFactory){
     host : iibConnectionFactory.host,
     port : iibConnectionFactory.port,
     clientId : "depot",    
-    topic : "IBM/IntegrationBus/TESTNODE_John/Monitoring/default/ScheduleMaintenance"            
+    topic : "IBM/IntegrationBus/"+iibConnectionFactory.integrationNodeName+"/Monitoring/default/ScheduleMaintenance"            
   };
 
   var client = new Paho.MQTT.Client(IIB.host, IIB.port, IIB.clientId);
