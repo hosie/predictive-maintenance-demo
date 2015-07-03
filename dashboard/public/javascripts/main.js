@@ -62,32 +62,61 @@ function pmdDbInvokeDirective($rootScope,AssetRecordFactory){
           .attr("cy",850)      
           .attr("fill","#d9182d")
           .transition()
-          .duration(300)
+          .duration(100)
           .delay(0)
-          .attr("cx",530)
+          .attr("cy",800)
           .each("end",function(){
             d3.select(this)
             .transition()
-            .duration(200)
+            .duration(300)
             .delay(0)
-            .attr("cy",740)
+            .attr("cx",530)
             .each("end",function(){
               d3.select(this)
               .transition()
-              .duration(300)            
+              .duration(100)
               .delay(0)
-              .attr("r",85)
-              .attrTween("opacity",function(d,i,a){
-                return d3.interpolate(1, 0.01)
-              })
+              .attr("cy",740)
               .each("end",function(){
                 d3.select(this)
                 .transition()
                 .duration(200)            
                 .delay(0)
-                .attr("opacity",0);
-              });              
-            });            
+                .attr("r",85)
+                .attrTween("opacity",function(d,i,a){
+                  return d3.interpolate(1, 0.01)
+                }).each("end",function(){
+                  d3.select(this)
+                  .transition()
+                  .duration(200)            
+                  .delay(100)
+                  .attr("r",8)
+                  .attrTween("opacity",function(d,i,a){
+                    return d3.interpolate(0.1, 1)
+                  }).each("end",function(){
+                    d3.select(this)
+                    .transition()
+                    .duration(100)            
+                    .delay(0)                  
+                    .attr("cy",800)
+                    .each("end",function(){
+                      d3.select(this)
+                      .transition()
+                      .duration(300)            
+                      .delay(0)                  
+                      .attr("cx",315)
+                      .each("end",function(){
+                        d3.select(this)
+                        .transition()
+                        .duration(100)            
+                        .delay(0)                  
+                        .attr("cy",850);
+                      });                    
+                    });
+                  });
+                });
+              });            
+            });
           });
       });
     }
@@ -114,27 +143,31 @@ function pmdDepotEventDirective($rootScope,DepotEventFactory){
           .attr("fill","#d9182d")
           .transition()
           .duration(300)
-          .delay(0)
-          .attr("cx",108)
+          .delay(1500)
+          .attr("cy",900)
           .each("end",function(){
             d3.select(this)
             .transition()
             .duration(200)
             .delay(0)
-            .attr("cy",950)
+            .attr("cx",108)
             .each("end",function(){
               d3.select(this)
               .transition()
               .duration(300)            
               .delay(0)
-              .attr("r",85)
+              .attr("cy",950)            
               .each("end",function(){
                 d3.select(this)
                 .transition()
                 .duration(200)            
                 .delay(0)
+                .attr("r",85)              
                 .attrTween("opacity",function(d,i,a){
-                  return d3.interpolate(1, 0.01)
+                  return d3.interpolate(1, 0.1)
+                }).each("end",function(){
+                  d3.select(this)
+                  .attr("opacity",0);
                 });
               });              
             });            
@@ -156,7 +189,6 @@ function pmdWarehouseEventDirective($rootScope,WarehouseEventFactory){
     };
 
     function link(scope,iElement,iAttrs){
-      //$rootScope.$watch('assetLookUps'
       WarehouseEventFactory.on(function(){
         d3.select(iElement[0]).append("circle")
           .attr("r",8)
@@ -165,27 +197,31 @@ function pmdWarehouseEventDirective($rootScope,WarehouseEventFactory){
           .attr("fill","#d9182d")
           .transition()
           .duration(300)
-          .delay(0)
-          .attr("cx",530)
+          .delay(1500)
+          .attr("cy",900)
           .each("end",function(){
             d3.select(this)
             .transition()
             .duration(200)
             .delay(0)
-            .attr("cy",950)
+            .attr("cx",530)
             .each("end",function(){
               d3.select(this)
               .transition()
               .duration(300)            
               .delay(0)
-              .attr("r",85)
+              .attr("cy",950)
               .each("end",function(){
                 d3.select(this)
                 .transition()
                 .duration(200)            
                 .delay(0)
+                .attr("r",85)              
                 .attrTween("opacity",function(d,i,a){
                   return d3.interpolate(1, 0.01)
+                }).each("end",function(){
+                  d3.select(this)
+                  .attr("opacity",0);
                 });
               });              
             });            
