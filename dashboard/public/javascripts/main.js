@@ -28,6 +28,7 @@ app.controller('WarehouseController',["$scope","WarehouseEventFactory",warehouse
 app.directive('pmdDbInvoke',["$rootScope","AssetRecordFactory",pmdDbInvokeDirective]);
 app.directive('pmdDepotEvent',["$rootScope","DepotEventFactory",pmdDepotEventDirective]);
 app.directive('pmdWarehouseEvent',["$rootScope","WarehouseEventFactory",pmdWarehouseEventDirective]);
+app.directive('pmdLondonBusFeed',["$rootScope","LondonBusEventFactory",pmdLondonBusFeedDirective]);
 app.factory('iibConnectionFactory',function(){
   return {
     host : "localhost",
@@ -98,7 +99,7 @@ function pmdDepotEventDirective($rootScope,DepotEventFactory){
     
     return {
       restrict: 'EAC',
-        //TODO - can we derive these scope attributes from the widgetSpec factory?
+        
       scope:{        
       },
       link: link
@@ -148,7 +149,7 @@ function pmdWarehouseEventDirective($rootScope,WarehouseEventFactory){
     
     return {
       restrict: 'EAC',
-        //TODO - can we derive these scope attributes from the widgetSpec factory?
+        
       scope:{        
       },
       link: link
@@ -193,3 +194,80 @@ function pmdWarehouseEventDirective($rootScope,WarehouseEventFactory){
     }
 };
 
+function pmdLondonBusFeedDirective($rootScope,LondonBusEventFactory){
+    var iibSubscriber=iibSubscriber; 
+    
+        
+    return {
+      restrict: 'EAC',
+        
+      scope:{        
+      },
+      link: link
+    };
+    
+    
+    
+    function link(scope,iElement,iAttrs){
+      
+      var interval;
+      var pulsing=false;
+      var timeout=undefined;
+      var line = d3.select(iElement[0]).append("path");
+      
+      function scheduleExipry(){
+        if(timeout!=undefined){
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(function(){
+          pulsing=false;
+          
+        },1000);//timeout after a second
+                    
+      }
+      
+      
+      LondonBusEventFactory.on(function(){
+        scheduleExipry();
+        
+        
+        function pulseIn(){
+          var transistion = d3.select(this)
+              .transition()
+              .duration(300)
+              .delay(0)
+              .attr("stroke-width",5);
+          
+            transistion.each("end",function(){
+              if(pulsing){
+                pulseOut.call(line);                
+              }else{
+                line.attr("stroke-width",0)
+              }
+            });                     
+        }
+        
+        function pulseOut(){
+          this
+            .transition()
+            .duration(300)
+            .delay(0)
+            .attr("stroke-width",1)
+            .each("end",pulseIn);
+          
+        }        
+        
+        if(false==pulsing){
+          pulsing=true;
+          line.attr("d","m 90,690 100,0 0,160 112.41548,0")
+              .attr("stroke","red")
+              .attr("fill","none")
+              .attr("stroke-width",1)
+              .call(function(){
+                pulseOut.call(line);                
+              });
+        }
+     
+      });
+    }
+};
