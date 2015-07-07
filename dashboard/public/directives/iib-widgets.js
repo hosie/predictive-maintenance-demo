@@ -345,6 +345,9 @@ includePaho();
           var statsMessage = JSON.parse(message.payloadString);
           
           widget.data.push(statsMessage.WMQIStatisticsAccounting.MessageFlow);
+          if(widget.data.length>100){
+            widget.data.shift();
+          }
           //TODO map message to data format required by widget.
           //who provides the mapping function?  For now, the widget but lets separate that out so that the widget just says the metric that they want (e.g. flow.cpu)
           //widget.onMessageArrived(message);
