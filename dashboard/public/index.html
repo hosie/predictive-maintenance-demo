@@ -64,7 +64,15 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="scenario.svg">
   <defs
-     id="defs4884" />
+     id="defs4884" >
+     <symbol id="my_div" viewBox="0 0 50 50" >
+                <foreignObject x="0" y="0" width="50" height="50" fill="red">
+                    <body xmlns="http://www.w3.org/1999/xhtml" style="background:none transparent;" width="50" height="50">
+                        <div>MY DIV</div>
+                    </body>
+                </foreignObject>
+            </symbol>
+            </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -108,7 +116,12 @@
     <g pmd-london-bus-feed=""/>
     
     <rect x="200" y="830" height="40" width="200" ry="15"></rect>
-    
+    <foreignObject x="10" y="800" width="100" height="150">
+      <div ng-controller="LondonBusController">
+        <span class="badge">{{bus.milleage}}</span> miles<br>        
+      </div>
+     
+    </foreignObject>
     <g
        id="g6666"
        transform="translate(-20.365141,572.19479)">
@@ -236,6 +249,7 @@
            y="27"
            x="11" />
       </g>
+      
       <g ng-controller="LondonBusController">              
       <path ng-if="bleeps.bleep1"
          style="fill:none;fill-rule:evenodd;stroke:#d9182d;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
