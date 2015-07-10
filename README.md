@@ -22,7 +22,9 @@ To demonstrate this scenario
             Edit (if necessary) and run   .\asset-management-mock\start.cmd
 
     4) Start the server for the dashboard        
+            You may need to update .\dashboard\public\javascripts\main.js if you have changed the Integration Node name or port number in step 2
             Edit (if necessary) and run   .\dashboard\start.cmd
+            
 
     5) Open the dashboard in a browser  ( localhost:3000)
 
